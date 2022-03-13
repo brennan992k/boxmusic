@@ -30,14 +30,14 @@ class MovieAlbumModel {
         list.map((i) => MostPlayedItem.fromJson(i)).toList();
 
     return MovieAlbumModel(
-      likecount: jsonMap['like_count'],
-      albumimage: jsonMap['album_image'],
+      likecount: jsonMap['like_count'] ?? '',
+      albumimage: jsonMap['album_image'] ?? '',
       artistid: jsonMap['artist_id'],
-      categoryname: jsonMap['category_name'],
-      isliked: jsonMap['is_liked'],
-      albumid: jsonMap['album_id'],
-      moviename: jsonMap['movie_name'],
-      albumname: jsonMap['album_name'],
+      categoryname: jsonMap['category_name'] ?? '',
+      isliked: jsonMap['is_liked'] ?? 0,
+      albumid: jsonMap['album_id'] ?? '',
+      moviename: jsonMap['movie_name'] ?? '',
+      albumname: jsonMap['album_name'] ?? '',
       mostplay: lists,
     );
   }

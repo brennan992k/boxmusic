@@ -30,10 +30,10 @@ class RecommendedAlbumItem {
   factory RecommendedAlbumItem.fromJson(Map<String, dynamic> jsonMap) {
     return RecommendedAlbumItem(
       albumid: jsonMap['album_id'],
-      albumimage: jsonMap['album_image'],
-      albumname: jsonMap['album_name'],
-      isliked: jsonMap['is_liked'],
-      likedCount: jsonMap['likedCount'],
+      albumimage: jsonMap['album_image'] ?? '',
+      albumname: jsonMap['album_name'] ?? '',
+      isliked: jsonMap['is_liked'] ?? 0,
+      likedCount: jsonMap['likedCount'] ?? '',
     );
   }
 }

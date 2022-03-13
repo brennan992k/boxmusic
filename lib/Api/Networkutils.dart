@@ -23,10 +23,10 @@ import 'package:visong/model/viewMovie.dart';
 
 class Networkutils {
   // ignore: non_constant_identifier_names
-  static const BASEURL = "http://appiconmakers.com/demoMusicPlayer/API/";
+  static const BASEURL = "http://localhost/boxmusic_w/API/";
 
   // ignore: non_constant_identifier_names
-  static const Baserl1 = "http://appiconmakers.com/demoMusicPlayer/";
+  static const Baserl1 = "http://localhost/boxmusic_w/";
 
   final JsonDecoder _decoder = new JsonDecoder();
 

@@ -28,10 +28,10 @@ class MoviesItem {
   factory MoviesItem.fromJson(Map<String, dynamic> jsonMap) {
     return MoviesItem(
       movieid: jsonMap['movie_id'],
-      movieimage: jsonMap['movie_image'],
-      moviename: jsonMap['movie_name'],
-      isliked: jsonMap['is_liked'],
-      likedCount: jsonMap['likedCount'],
+      movieimage: jsonMap['movie_image'] ?? '',
+      moviename: jsonMap['movie_name'] ?? '',
+      isliked: jsonMap['is_liked'] ?? 0,
+      likedCount: jsonMap['likedCount'] ?? '',
     );
   }
 }

@@ -31,10 +31,10 @@ class FavouriteArtistItem {
   factory FavouriteArtistItem.fromJson(Map<String, dynamic> jsonMap) {
     return FavouriteArtistItem(
       artistid: jsonMap['artist_id'],
-      artistname: jsonMap['artist_name'],
-      artistimage: jsonMap['artist_image'],
-      likedCount: jsonMap['likedCount'],
-      isliked: jsonMap['is_liked'],
+      artistname: jsonMap['artist_name'] ?? '',
+      artistimage: jsonMap['artist_image'] ?? '',
+      likedCount: jsonMap['likedCount'] ?? '',
+      isliked: jsonMap['is_liked'] ?? 0,
     );
   }
 }

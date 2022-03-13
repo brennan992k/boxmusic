@@ -5,7 +5,7 @@ class Downloads {
 
   factory Downloads.fromJson(Map<String, dynamic> jsonMap) {
     return Downloads(
-      isallowdownloads: jsonMap['is_allow_downloads'],
+      isallowdownloads: jsonMap['is_allow_downloads'] ?? 0,
     );
   }
 }

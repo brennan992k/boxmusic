@@ -38,13 +38,15 @@ class BannerSliderItem {
   factory BannerSliderItem.fromJson(Map<String, dynamic> jsonMap) {
     return BannerSliderItem(
         bannersliderid: jsonMap['banner_slider_id'],
-        bannerslidername: jsonMap['banner_slider_name'],
-        bannerslidernamealignment: jsonMap['banner_slider_name_alignment'],
-        bannersliderimage: jsonMap['banner_slider_image'],
-        bannerslidershowbutton: jsonMap['banner_slider_show_button'],
-        bannersliderbuttonalignment: jsonMap['banner_slider_button_alignment'],
-        bannersliderbuttontext: jsonMap['banner_slider_button_text'],
-        bannersliderorder: jsonMap['banner_slider_order'],
-        bannersliderstatus: jsonMap['banner_slider_status']);
+        bannerslidername: jsonMap['banner_slider_name'] ?? '',
+        bannerslidernamealignment:
+            jsonMap['banner_slider_name_alignment'] ?? '',
+        bannersliderimage: jsonMap['banner_slider_image'] ?? '',
+        bannerslidershowbutton: jsonMap['banner_slider_show_button'] ?? '',
+        bannersliderbuttonalignment:
+            jsonMap['banner_slider_button_alignment'] ?? '',
+        bannersliderbuttontext: jsonMap['banner_slider_button_text'] ?? '',
+        bannersliderorder: jsonMap['banner_slider_order'] ?? '',
+        bannersliderstatus: jsonMap['banner_slider_status'] ?? '');
   }
 }

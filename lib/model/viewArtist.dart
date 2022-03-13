@@ -37,10 +37,10 @@ class ViewArtistItem {
         list.map((i) => MostPlayedItem.fromJson(i)).toList();
     return ViewArtistItem(
       artistid: jsonMap['artist_id'],
-      artistname: jsonMap['artist_name'],
-      artistimage: jsonMap['artist_image'],
-      isliked: jsonMap['is_liked'],
-      likedCount: jsonMap['like_count'],
+      artistname: jsonMap['artist_name'] ?? '',
+      artistimage: jsonMap['artist_image'] ?? '',
+      isliked: jsonMap['is_liked'] ?? 0,
+      likedCount: jsonMap['like_count'] ?? '',
       mostplay: lists,
     );
   }

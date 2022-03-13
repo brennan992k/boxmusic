@@ -31,14 +31,14 @@ class ViewMovie {
         list.map((i) => MostPlayedItem.fromJson(i)).toList();
 
     return ViewMovie(
-      isliked: jsonMap['is_liked'],
-      likecount: jsonMap['like_count'],
-      moviedescription: jsonMap['movie_description'],
+      isliked: jsonMap['is_liked'] ?? 0,
+      likecount: jsonMap['like_count'] ?? 0,
+      moviedescription: jsonMap['movie_description'] ?? '',
       movieid: jsonMap['movie_id'],
-      movieimage: jsonMap['movie_image'],
-      movieyear: jsonMap['movie_year'],
-      moviename: jsonMap['movie_name'],
-      albumname: jsonMap['album_name'],
+      movieimage: jsonMap['movie_image'] ?? '',
+      movieyear: jsonMap['movie_year'] ?? '',
+      moviename: jsonMap['movie_name'] ?? '',
+      albumname: jsonMap['album_name'] ?? '',
       mostplay: imagesList,
     );
   }

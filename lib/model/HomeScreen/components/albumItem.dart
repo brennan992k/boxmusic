@@ -34,12 +34,12 @@ class PopularAlbumItem {
   factory PopularAlbumItem.fromJson(Map<String, dynamic> jsonMap) {
     return PopularAlbumItem(
       albumid: jsonMap['album_id'],
-      albumname: jsonMap['album_name'],
-      albumimage: jsonMap['album_image'],
-      isliked: jsonMap['is_liked'],
-      likecount: jsonMap['like_count'],
-      musiccount: jsonMap['music_count'],
-      viewCount: jsonMap['viewCount'],
+      albumname: jsonMap['album_name'] ?? '',
+      albumimage: jsonMap['album_image'] ?? '',
+      isliked: jsonMap['is_liked'] ?? 0,
+      likecount: jsonMap['like_count'] ?? 0,
+      musiccount: jsonMap['music_count'] ?? 0,
+      viewCount: jsonMap['viewCount'] ?? '',
     );
   }
 }

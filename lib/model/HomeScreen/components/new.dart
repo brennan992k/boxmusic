@@ -30,10 +30,10 @@ class AllAlbumItem {
   factory AllAlbumItem.fromJson(Map<String, dynamic> jsonMap) {
     return AllAlbumItem(
       albumid: jsonMap['album_id'],
-      albumname: jsonMap['album_name'],
-      albumimage: jsonMap['album_image'],
-      isliked: jsonMap['is_liked'],
-      likecount: jsonMap['like_count'],
+      albumname: jsonMap['album_name'] ?? '',
+      albumimage: jsonMap['album_image'] ?? '',
+      isliked: jsonMap['is_liked'] ?? 0,
+      likecount: jsonMap['like_count'] ?? 0,
     );
   }
 }

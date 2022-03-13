@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_media_notification/flutter_media_notification.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
@@ -284,7 +283,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
     _audioPlayer.dispose();
     _controller.dispose();
     super.dispose();
-    await MediaNotification.hideNotification();
+    // await MediaNotification.hideNotification();
   }
 
   Widget round(String image) {

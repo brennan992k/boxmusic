@@ -22,8 +22,8 @@ class SearchesItem {
 
   factory SearchesItem.fromJson(Map<String, dynamic> jsonMap) {
     return SearchesItem(
-        searchtext: jsonMap['search_text'],
+        searchtext: jsonMap['search_text'] ?? '',
         id: jsonMap['id'],
-        searchtype: jsonMap['search_type']);
+        searchtype: jsonMap['search_type'] ?? '');
   }
 }

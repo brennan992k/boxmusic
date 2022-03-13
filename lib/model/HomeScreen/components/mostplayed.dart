@@ -21,9 +21,9 @@ class MostPlayedItem {
   final String musicimage;
   final String musicduration;
   final String playCount;
-  int isinplaylist;
+  final dynamic isinplaylist;
   int isliked;
-  final int likecount;
+  final dynamic likecount;
   final String albumname;
   final List<Artists> artistlist;
 
@@ -49,19 +49,19 @@ class MostPlayedItem {
     List<Artists> imagesList = list.map((i) => Artists.fromJson(i)).toList();
 
     return MostPlayedItem(
-        musicduration: jsonMap['music_duration'],
-        isliked: jsonMap['is_liked'],
-        musicfile: jsonMap['music_file'],
-        musicimage: jsonMap['music_image'],
-        likecount: jsonMap['like_count'],
-        musicid: jsonMap['music_id'],
+        musicduration: jsonMap['music_duration'] ?? '',
+        isliked: jsonMap['is_liked'] ?? 0,
+        musicfile: jsonMap['music_file'] ?? '',
+        musicimage: jsonMap['music_image'] ?? '',
+        likecount: jsonMap['like_count'] ?? '',
+        musicid: jsonMap['music_id'] ?? '',
         artistid: jsonMap['artist_id'],
-        isinplaylist: jsonMap['is_in_playlist'],
-        albumid: jsonMap['album_id'],
-        playCount: jsonMap['playCount'],
-        albumname: jsonMap['album_name'],
+        isinplaylist: jsonMap['is_in_playlist'] ?? 0,
+        albumid: jsonMap['album_id'] ?? '',
+        playCount: jsonMap['playCount'] ?? '',
+        albumname: jsonMap['album_name'] ?? '',
         artistlist: imagesList,
-        musictitle: jsonMap['music_title']);
+        musictitle: jsonMap['music_title'] ?? '');
   }
 }
 

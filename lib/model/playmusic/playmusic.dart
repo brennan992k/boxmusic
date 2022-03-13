@@ -46,16 +46,16 @@ class PlayMusicItem {
 
     return PlayMusicItem(
         musicduration: jsonMap['music_duration'],
-        isliked: jsonMap['is_liked'],
-        musicfile: jsonMap['music_file'],
-        musicimage: jsonMap['music_image'],
-        likecount: jsonMap['like_count'],
+        isliked: jsonMap['is_liked'] ?? 0,
+        musicfile: jsonMap['music_file'] ?? '',
+        musicimage: jsonMap['music_image'] ?? '',
+        likecount: jsonMap['like_count'] ?? '',
         musicid: jsonMap['music_id'],
         movieid: jsonMap['movie_id'],
-        moviename: jsonMap['movie_name'],
-        albumname: jsonMap['album_name'],
+        moviename: jsonMap['movie_name'] ?? '',
+        albumname: jsonMap['album_name'] ?? '',
         artistlist: imagesList,
-        musictitle: jsonMap['music_title']);
+        musictitle: jsonMap['music_title'] ?? '');
   }
 }
 

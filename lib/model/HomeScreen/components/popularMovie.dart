@@ -29,10 +29,10 @@ class PopularMovieItem {
   factory PopularMovieItem.fromJson(Map<String, dynamic> jsonMap) {
     return PopularMovieItem(
       movieid: jsonMap['movie_id'],
-      movieimage: jsonMap['movie_image'],
-      moviename: jsonMap['movie_name'],
-      isliked: jsonMap['is_liked'],
-      viewCount: jsonMap['viewCount'],
+      movieimage: jsonMap['movie_image'] ?? '',
+      moviename: jsonMap['movie_name'] ?? '',
+      isliked: jsonMap['is_liked'] ?? 0,
+      viewCount: jsonMap['viewCount'] ?? '',
     );
   }
 }

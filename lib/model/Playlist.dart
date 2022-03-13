@@ -37,8 +37,8 @@ class PlaylistItem {
 
     return PlaylistItem(
       userplaylistid: jsonMap['user_playlist_id'],
-      userplaylistname: jsonMap['user_playlist_name'],
-      musiccount: jsonMap['music_count'],
+      userplaylistname: jsonMap['user_playlist_name'] ?? '',
+      musiccount: jsonMap['music_count'] ?? 0,
       imagesslist: imagesList,
     );
   }

@@ -28,11 +28,11 @@ class PackagesItem {
 
   factory PackagesItem.fromJson(Map<String, dynamic> jsonMap) {
     return PackagesItem(
-      packageprice: jsonMap['package_price'],
-      totalpackageprice: jsonMap['total_package_price'],
+      packageprice: jsonMap['package_price'] ?? '',
+      totalpackageprice: jsonMap['total_package_price'] ?? '',
       packageid: jsonMap['package_id'],
-      packageduration: jsonMap['package_duration'],
-      packagename: jsonMap['package_name'],
+      packageduration: jsonMap['package_duration'] ?? '',
+      packagename: jsonMap['package_name'] ?? '',
     );
   }
 }
