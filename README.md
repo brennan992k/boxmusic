@@ -1,7 +1,7 @@
 ### Preview
 
 <img src="./demo/image1.png" width="400">
-<img src="./demo/image2.png" width="400">
+<img src="./demo/image2.gif" width="400">
 <img src="./demo/image3.png" width="400">
 
 ## LICENSE
