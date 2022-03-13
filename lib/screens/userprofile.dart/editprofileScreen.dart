@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/staticData.dart';
 
 class EditProfileScreen extends StatefulWidget {
   @override
@@ -9,10 +9,10 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  TextEditingController _username = TextEditingController();
-  TextEditingController _userEmail = TextEditingController();
-  TextEditingController _usermobile = TextEditingController();
-  AppConfig appConfig;
+  final TextEditingController _username = TextEditingController();
+  final TextEditingController _userEmail = TextEditingController();
+  final TextEditingController _usermobile = TextEditingController();
+  late AppConfig appConfig;
   @override
   void initState() {
     super.initState();
@@ -43,7 +43,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       home: Scaffold(
         body: SingleChildScrollView(
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 // gradient: LinearGradient(
                 //   colors: [
                 //     Color.fromRGBO(47, 11, 69, 1),
@@ -59,10 +59,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   image: AssetImage(StaticData.imagepath + 'banner.png'),
                   fit: BoxFit.fill,
                 ),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     Color.fromRGBO(47, 11, 69, 1),
-                    Color.fromRGBO(19, 13, 75, 1),
+                    const Color.fromRGBO(19, 13, 75, 1),
                   ],
                 ),
               ),
@@ -79,33 +79,33 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           Navigator.of(context).pop();
                         },
                         child: Container(
-                          margin: EdgeInsets.only(left: 20),
-                          child: Icon(
+                          margin: const EdgeInsets.only(left: 20),
+                          child: const Icon(
                             Icons.arrow_back_ios,
                             color: Colors.white,
                           ),
                         ),
                       ),
-                      Text(
+                      const Text(
                         'Edit Profile',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 55,
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 17,
                   ),
                   Container(
                     height: 130,
                     width: 130,
                     decoration: BoxDecoration(
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           blurRadius: 20,
                           color: Colors.black38,
@@ -122,7 +122,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -150,7 +150,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   Container(
                                     height: 50,
                                     width: 50,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.person,
                                       color: Colors.blueAccent,
                                     ),
@@ -162,7 +162,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                               Colors.black12.withOpacity(0.1),
                                         ),
                                       ],
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         // bottomLeft: Radius.circular(20),
                                         topLeft: Radius.circular(20),
                                         topRight: Radius.circular(20),
@@ -171,15 +171,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Container(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 7,
                                           color: Colors.black12,
@@ -189,10 +189,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     ),
                                     width: 280,
                                     child: TextFormField(
-                                      style: TextStyle(color: Colors.black),
+                                      style:
+                                          const TextStyle(color: Colors.black),
                                       keyboardType: TextInputType.text,
                                       controller: _username,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         labelText: 'Name',
                                         labelStyle:
                                             TextStyle(color: Colors.blueAccent),
@@ -203,7 +204,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Container(
@@ -215,7 +216,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   Container(
                                     height: 50,
                                     width: 50,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.mail,
                                       color: Colors.blueAccent,
                                     ),
@@ -227,7 +228,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                               Colors.black12.withOpacity(0.1),
                                         ),
                                       ],
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(20),
                                         topRight: Radius.circular(20),
                                         bottomRight: Radius.circular(20),
@@ -235,15 +236,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Container(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 7,
                                           color: Colors.black12,
@@ -253,10 +254,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     ),
                                     width: 280,
                                     child: TextFormField(
-                                      style: TextStyle(color: Colors.black),
+                                      style:
+                                          const TextStyle(color: Colors.black),
                                       keyboardType: TextInputType.emailAddress,
                                       controller: _userEmail,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         labelText: 'Email',
                                         labelStyle:
                                             TextStyle(color: Colors.blueAccent),
@@ -268,7 +270,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Container(
@@ -279,7 +281,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   Container(
                                     height: 50,
                                     width: 50,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.call_outlined,
                                       color: Colors.blueAccent,
                                     ),
@@ -291,7 +293,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                               Colors.black12.withOpacity(0.1),
                                         ),
                                       ],
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(20),
                                         topRight: Radius.circular(20),
                                         bottomRight: Radius.circular(20),
@@ -299,15 +301,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       color: Colors.white,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Container(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 7,
                                           color: Colors.black12,
@@ -317,13 +319,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                     ),
                                     width: 280,
                                     child: TextFormField(
-                                      style: TextStyle(color: Colors.black),
+                                      style:
+                                          const TextStyle(color: Colors.black),
                                       controller: _usermobile,
                                       keyboardType: TextInputType.number,
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         labelText: 'Mobile',
-                                        labelStyle:
-                                            TextStyle(color: Colors.blueAccent),
+                                        labelStyle: TextStyle(
+                                            color: Colors.blueAccent),
                                         border: InputBorder.none,
                                       ),
                                     ),
@@ -345,16 +348,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 },
                                 child: Container(
                                   alignment: Alignment.center,
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
-                                    gradient: LinearGradient(
+                                    gradient: const LinearGradient(
                                       colors: [
-                                        Color.fromRGBO(79, 139, 241, 1),
+                                        const Color.fromRGBO(79, 139, 241, 1),
                                         Color.fromRGBO(153, 92, 228, 1),
                                       ],
                                     ),
-                                    boxShadow: [
+                                    boxShadow: const [
                                       BoxShadow(
                                         blurRadius: 7,
                                         color: Colors.black12,
@@ -364,7 +368,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   ),
                                   width: 100,
                                   height: 40,
-                                  child: Text(
+                                  child: const Text(
                                     'Submit',
                                     style: TextStyle(
                                       fontSize: 20,

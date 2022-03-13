@@ -23,12 +23,12 @@ class ViewArtistItem {
   final List<MostPlayedItem> mostplay;
 
   ViewArtistItem({
-    this.artistid,
-    this.artistname,
-    this.artistimage,
-    this.likedCount,
-    this.isliked,
-    this.mostplay,
+    required this.artistid,
+    required this.artistname,
+    required this.artistimage,
+    required this.likedCount,
+    required this.isliked,
+    required this.mostplay,
   });
 
   factory ViewArtistItem.fromJson(Map<String, dynamic> jsonMap) {

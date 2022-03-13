@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/customRoute.dart';
-import 'package:songapp/screens/viewAlbum.dart';
-import 'package:songapp/screens/viewAllAlbum.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/customRoute.dart';
+import 'package:visong/screens/viewAlbum.dart';
+import 'package:visong/screens/viewAllAlbum.dart';
+import 'package:visong/staticData.dart';
 
 // ignore: must_be_immutable
 class Album extends StatelessWidget {
   final List album;
-  Album(this.album);
-  AppConfig _appConfig;
+  Album(this.album, {Key? key}) : super(key: key);
+  late AppConfig _appConfig;
 
   @override
   Widget build(BuildContext context) {
     _appConfig = AppConfig(context);
 
     return Container(
-      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       // height: _appConfig.rH(32),
       child: Column(
         children: <Widget>[
           Container(
             height: _appConfig.rH(7),
-            margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
-            padding: EdgeInsets.symmetric(horizontal: 5.0),
+            margin: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Row(
               children: <Widget>[
                 Container(
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
@@ -47,14 +47,14 @@ class Album extends StatelessWidget {
                     // scale: 2,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
                   child: Text(
                     "Popular Albums",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
@@ -62,7 +62,7 @@ class Album extends StatelessWidget {
                   },
                   child: Container(
                     padding: const EdgeInsets.fromLTRB(10, 5, 5, 5),
-                    child: Text(
+                    child: const Text(
                       "See all",
                       style: TextStyle(
                         color: Color.fromRGBO(153, 92, 228, 1),
@@ -78,11 +78,11 @@ class Album extends StatelessWidget {
             height: MediaQuery.of(context).size.height > 840
                 ? _appConfig.rH(25)
                 : _appConfig.rH(27),
-            margin: EdgeInsets.symmetric(vertical: 0.0),
-            child: album.length == 0
+            margin: const EdgeInsets.symmetric(vertical: 0.0),
+            child: album.isEmpty
                 ? Container()
                 : ListView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemCount: album.length,
                     itemBuilder: (context, index) {
@@ -102,7 +102,7 @@ class Album extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                             vertical: 5.0,
                             horizontal: 0.0,
                           ),
@@ -110,7 +110,7 @@ class Album extends StatelessWidget {
                           height: _appConfig.rHP(23),
                           child: Column(
                             children: <Widget>[
-                              Container(
+                              SizedBox(
                                 width: _appConfig.rHP(17),
                                 height: _appConfig.rHP(17),
                                 child: Stack(
@@ -135,11 +135,11 @@ class Album extends StatelessWidget {
                                       bottom: 5,
                                       right: 5,
                                       child: Container(
-                                        padding:
-                                            EdgeInsets.fromLTRB(5, 0, 5, 0),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            5, 0, 5, 0),
                                         width: _appConfig.rWP(20),
                                         height: _appConfig.rHP(3),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Colors.white,
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(16.0),
@@ -159,7 +159,7 @@ class Album extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5.0,
                               ),
                               Padding(
@@ -182,7 +182,7 @@ class Album extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: <Widget>[
-                                        Icon(
+                                        const Icon(
                                           Icons.perm_identity,
                                           color: Color(0xffAEAEAE),
                                         ),

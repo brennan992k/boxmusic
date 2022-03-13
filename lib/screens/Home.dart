@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/model/search.dart';
-import 'package:songapp/screens/music/music.dart';
-import 'package:songapp/screens/userprofile.dart/userProfileScreen.dart';
-import 'package:songapp/screens/viewAlbum.dart';
-import 'package:songapp/staticData.dart';
-import 'package:songapp/model/Allcomponents.dart';
-import 'package:songapp/model/HomeScreen/components/albumItem.dart';
-import 'package:songapp/model/HomeScreen/components/bannerSlider.dart' as b;
-import 'package:songapp/model/HomeScreen/components/favouriteArtist.dart';
-import 'package:songapp/model/HomeScreen/components/mostplayed.dart';
-import 'package:songapp/model/HomeScreen/components/movie.dart';
-import 'package:songapp/model/HomeScreen/components/recommendedAlbum.dart';
-import 'package:songapp/model/HomeScreen/components/popularMovie.dart' as s;
-import 'package:songapp/model/HomeScreen/components/mostplayed.dart' as m;
-import 'package:songapp/screens/widgets/PopularMovie.dart';
-import 'package:songapp/screens/widgets/Recommended.dart';
-import 'package:songapp/screens/widgets/favourite.dart';
-import 'package:songapp/screens/widgets/recentplay.dart';
-import 'package:songapp/screens/widgets/Album.dart';
-import 'package:songapp/screens/widgets/Banner.dart';
-import 'package:songapp/screens/widgets/Mostplayed.dart' as b;
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/model/search.dart';
+import 'package:visong/screens/music/music.dart';
+import 'package:visong/screens/userprofile.dart/userProfileScreen.dart';
+import 'package:visong/screens/viewAlbum.dart';
+import 'package:visong/staticData.dart';
+import 'package:visong/model/Allcomponents.dart';
+import 'package:visong/model/HomeScreen/components/albumItem.dart';
+import 'package:visong/model/HomeScreen/components/bannerSlider.dart' as b;
+import 'package:visong/model/HomeScreen/components/favouriteArtist.dart';
+import 'package:visong/model/HomeScreen/components/mostplayed.dart';
+import 'package:visong/model/HomeScreen/components/movie.dart';
+import 'package:visong/model/HomeScreen/components/recommendedAlbum.dart';
+import 'package:visong/model/HomeScreen/components/popularMovie.dart' as s;
+import 'package:visong/model/HomeScreen/components/mostplayed.dart' as m;
+import 'package:visong/screens/widgets/PopularMovie.dart';
+import 'package:visong/screens/widgets/Recommended.dart';
+import 'package:visong/screens/widgets/favourite.dart';
+import 'package:visong/screens/widgets/recentplay.dart';
+import 'package:visong/screens/widgets/Album.dart';
+import 'package:visong/screens/widgets/Banner.dart';
+import 'package:visong/screens/widgets/Mostplayed.dart' as b;
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -28,9 +28,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Networkutils networkutils;
+  late Networkutils networkutils;
   // ignore: deprecated_member_use
-  List<AllComponentsItem> allItems = List();
+  List<AllComponentsItem> allItems = [];
   @override
   void initState() {
     super.initState();
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ignore: deprecated_member_use
-  List<b.BannerSliderItem> banneritem = List();
+  List<b.BannerSliderItem> banneritem = [];
   void getBanner() async {
     await networkutils.getBannerSlider();
     banneritem = b.Banner.bannersliderLIst;
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ignore: deprecated_member_use
-  List<m.MostPlayedItem> mostplay = List();
+  List<m.MostPlayedItem> mostplay = [];
   void getmostplayed() async {
     await networkutils.mostplayed();
     mostplay = m.MostPlayed.homemostplaylist;
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ignore: deprecated_member_use
-  List<PopularAlbumItem> album = List();
+  List<PopularAlbumItem> album = [];
   void getAlbum() async {
     await networkutils.getAlbum();
     album = PopularAlbum.popalbumlist;
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ignore: deprecated_member_use
-  List<FavouriteArtistItem> favartist = List();
+  List<FavouriteArtistItem> favartist = [];
   void getfavArtist() async {
     await networkutils.getFavArtist();
     favartist = FavouriteArtist.favList;
@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ignore: deprecated_member_use
-  List<m.MostPlayedItem> recent = List();
+  List<m.MostPlayedItem> recent = [];
   void getrecent() async {
     await networkutils.recentPlayed();
     recent = m.MostPlayed.homemostplaylist;
@@ -101,11 +101,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ignore: deprecated_member_use
-  List<m.MostPlayedItem> recomSong = List();
+  List<m.MostPlayedItem> recomSong = [];
   // ignore: deprecated_member_use
-  List<MoviesItem> recomMovie = List();
+  List<MoviesItem> recomMovie = [];
   // ignore: deprecated_member_use
-  List<RecommendedAlbumItem> recomAlbum = List();
+  List<RecommendedAlbumItem> recomAlbum = [];
   void recommended() async {
     await networkutils.recommededMusic();
     recomSong = MostPlayed.homemostplaylist;
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ignore: deprecated_member_use
-  List<s.PopularMovieItem> popularMovies = List();
+  List<s.PopularMovieItem> popularMovies = [];
   void popularMoviees() async {
     await networkutils.movie();
     popularMovies = s.PopularMovie.movie;
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (allItems[position].homecomponentsname == 'Popular Albums')
       return Album(album);
     if (allItems[position].homecomponentsname == 'Favourite Artists')
-      return FavouriteArtists();
+      return const FavouriteArtists();
     if (allItems[position].homecomponentsname == 'Recently Played')
       return RecentPlay(recent);
     if (allItems[position].homecomponentsname == 'Recommended Music')
@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               color: Colors.black,
             ),
@@ -165,9 +165,9 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: () {
             Navigator.of(context).push(
               PageRouteBuilder(
-                transitionDuration: Duration(milliseconds: 300),
+                transitionDuration: const Duration(milliseconds: 300),
                 pageBuilder: (ctx, animation, secondaryAnimation) =>
-                    UserProfileSceen(),
+                    const UserProfileSceen(),
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
                   return SlideTransition(
@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
           child: Padding(
-            padding: EdgeInsets.all(13),
+            padding: const EdgeInsets.all(13),
             child: Container(
               child: Image.asset(
                 StaticData.imagepath + 'profile.png',
@@ -206,8 +206,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: allItems.length == 0
-          ? Center(
-              child: CircularProgressIndicator(
+          ? const Center(
+              child: const CircularProgressIndicator(
                 strokeWidth: 2,
                 backgroundColor: Colors.purple,
               ),
@@ -234,7 +234,7 @@ class CustomSearchDelegate extends SearchDelegate {
       query.isEmpty
           ? Container()
           : IconButton(
-              icon: Icon(Icons.clear),
+              icon: const Icon(Icons.clear),
               onPressed: () {
                 query = '';
               },
@@ -245,7 +245,7 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, null);
       },
@@ -253,7 +253,7 @@ class CustomSearchDelegate extends SearchDelegate {
   }
 
   // ignore: deprecated_member_use
-  List<SearchesItem> searches = List();
+  List<SearchesItem> searches = [];
 
   void movies(String id, context) async {
     await networkUtil.viewMovie(id).then((value) {});
@@ -324,9 +324,9 @@ class CustomSearchDelegate extends SearchDelegate {
     );
   }
 
-  Networkutils networkUtil;
+  late Networkutils networkUtil;
   // ignore: deprecated_member_use
-  List<MostPlayedItem> recent = List();
+  List<MostPlayedItem> recent = [];
 
   @override
   Widget buildResults(BuildContext context) {
@@ -334,7 +334,7 @@ class CustomSearchDelegate extends SearchDelegate {
     if (query.length < 1) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
+        children: const <Widget>[
           Center(
             child: Text(
               "Search term must be longer than two letters.",
@@ -350,19 +350,23 @@ class CustomSearchDelegate extends SearchDelegate {
         searches.add(Searches.searchlist[i]);
       }
     }
-    icons(i) {
+    Widget icons(i) {
       if (searches[i].searchtype == 'music') {
-        return Icon(Icons.music_note);
+        return const Icon(Icons.music_note);
       }
       if (searches[i].searchtype == 'artist') {
-        return Icon(Icons.person);
+        return const Icon(Icons.person);
       }
       if (searches[i].searchtype == 'movie') {
-        return Icon(Icons.movie);
+        return const Icon(Icons.movie);
       }
       if (searches[i].searchtype == 'album') {
-        return Icon(Icons.music_video);
+        return const Icon(Icons.music_video);
       }
+      return const SizedBox(
+        height: 0,
+        width: 0,
+      );
     }
 
     return ListView.builder(
@@ -381,16 +385,16 @@ class CustomSearchDelegate extends SearchDelegate {
               album(result.id, context);
             }
           },
-          child: searches.length == 0
-              ? Center(
+          child: searches.isEmpty
+              ? const Center(
                   child: Text('No data found'),
                 )
               : Container(
-                  margin: EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                     border: Border.all(
-                      color: Colors.grey[300],
+                      color: Colors.grey.shade300,
                       width: 2.0,
                     ),
                   ),
@@ -399,7 +403,7 @@ class CustomSearchDelegate extends SearchDelegate {
                     child: Row(
                       children: [
                         icons(index),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Column(
@@ -409,27 +413,27 @@ class CustomSearchDelegate extends SearchDelegate {
                             Container(
                               child: Text(
                                 result.searchtext,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xff5d5d5d),
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 1,
                             ),
                             Container(
                               child: Text(
                                 result.searchtype,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w900,
                                   color: Colors.grey,
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                           ],
@@ -452,4 +456,4 @@ class CustomSearchDelegate extends SearchDelegate {
 }
 
 // ignore: deprecated_member_use
-List<SearchesItem> search = List();
+List<SearchesItem> search = [];

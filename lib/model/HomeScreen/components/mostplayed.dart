@@ -1,9 +1,9 @@
 class MostPlayed {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<MostPlayedItem> homemostplaylist;
+  static late List<MostPlayedItem> homemostplaylist;
 
   MostPlayed.getuserid(dynamic obj) {
     homemostplaylist = obj
@@ -28,19 +28,19 @@ class MostPlayedItem {
   final List<Artists> artistlist;
 
   MostPlayedItem({
-    this.musicid,
-    this.musictitle,
-    this.musicimage,
-    this.musicduration,
-    this.musicfile,
-    this.isliked,
-    this.likecount,
-    this.albumname,
-    this.artistlist,
-    this.artistid,
-    this.isinplaylist,
-    this.albumid,
-    this.playCount,
+    required this.musicid,
+    required this.musictitle,
+    required this.musicimage,
+    required this.musicduration,
+    required this.musicfile,
+    required this.isliked,
+    required this.likecount,
+    required this.albumname,
+    required this.artistlist,
+    required this.artistid,
+    required this.isinplaylist,
+    required this.albumid,
+    required this.playCount,
   });
 
   factory MostPlayedItem.fromJson(Map<String, dynamic> jsonMap) {
@@ -69,7 +69,7 @@ class Artists {
   final String artistname;
   final String artistid;
 
-  Artists({this.artistname, this.artistid});
+  Artists({required this.artistname, required this.artistid});
 
   factory Artists.fromJson(Map<String, dynamic> jsonMap) {
     return Artists(

@@ -1,13 +1,12 @@
 class Movie {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<MoviesItem> movie;
+  static late List<MoviesItem> movie;
 
   Movie.getuserid(dynamic obj) {
-    movie =
-        obj.map<MoviesItem>((json) => new MoviesItem.fromJson(json)).toList();
+    movie = obj.map<MoviesItem>((json) => MoviesItem.fromJson(json)).toList();
   }
 }
 
@@ -19,11 +18,11 @@ class MoviesItem {
   final int isliked;
 
   MoviesItem({
-    this.movieid,
-    this.movieimage,
-    this.moviename,
-    this.isliked,
-    this.likedCount,
+    required this.movieid,
+    required this.movieimage,
+    required this.moviename,
+    required this.isliked,
+    required this.likedCount,
   });
 
   factory MoviesItem.fromJson(Map<String, dynamic> jsonMap) {

@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/model/HomeScreen/components/allArtists.dart';
-import 'package:songapp/screens/viewAlbum.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/model/HomeScreen/components/allArtists.dart';
+import 'package:visong/screens/viewAlbum.dart';
 
 class ViewArtists extends StatefulWidget {
+  const ViewArtists({Key? key}) : super(key: key);
+
   @override
   _ViewArtistState createState() => _ViewArtistState();
 }
 
 class _ViewArtistState extends State<ViewArtists> {
-  AppConfig appConfig;
-  Networkutils networkutils;
+  late AppConfig appConfig;
+  late Networkutils networkutils;
   bool loading = false;
 
   // ignore: deprecated_member_use
-  List<AllArtistsItem> artist = List();
+  List<AllArtistsItem> artist =[];
   @override
   void initState() {
     super.initState();

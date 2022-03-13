@@ -1,9 +1,9 @@
 class PlayMusic {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<PlayMusicItem> playMusic;
+  static late List<PlayMusicItem> playMusic;
 
   PlayMusic.getuserid(dynamic obj) {
     playMusic = obj
@@ -19,24 +19,24 @@ class PlayMusicItem {
   final String musicimage;
   final String musicduration;
   final String moviename;
-  int isliked;
+  int? isliked;
   final int likecount;
   final String albumname;
   final List<Artists> artistlist;
   final String movieid;
 
   PlayMusicItem({
-    this.musicid,
-    this.musictitle,
-    this.musicimage,
-    this.musicduration,
-    this.moviename,
-    this.movieid,
-    this.musicfile,
+    required this.musicid,
+    required this.musictitle,
+    required this.musicimage,
+    required this.musicduration,
+    required this.moviename,
+    required this.movieid,
+    required this.musicfile,
+    required this.likecount,
+    required this.albumname,
+    required this.artistlist,
     this.isliked,
-    this.likecount,
-    this.albumname,
-    this.artistlist,
   });
 
   factory PlayMusicItem.fromJson(Map<String, dynamic> jsonMap) {
@@ -63,7 +63,7 @@ class Artists {
   final String artistname;
 
   Artists({
-    this.artistname,
+    required this.artistname,
   });
 
   factory Artists.fromJson(Map<String, dynamic> jsonMap) {

@@ -13,7 +13,7 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 450,
       ),
     );
@@ -21,7 +21,7 @@ class _PlayState extends State<Play> with SingleTickerProviderStateMixin {
 
   bool _isplay = true;
 
-  AnimationController _animationController;
+  late AnimationController _animationController;
   @override
   Widget build(BuildContext context) {
     return IconButton(

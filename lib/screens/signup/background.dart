@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/staticData.dart';
 
 class BackGround extends StatelessWidget {
   final Widget child;
   const BackGround({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,9 @@
 class Packages {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<PackagesItem> myPackgelist;
+  static late List<PackagesItem> myPackgelist;
 
   Packages.getuserid(dynamic obj) {
     myPackgelist = obj
@@ -20,11 +20,11 @@ class PackagesItem {
   final String totalpackageprice;
 
   PackagesItem(
-      {this.packageid,
-      this.packagename,
-      this.packageduration,
-      this.packageprice,
-      this.totalpackageprice});
+      {required this.packageid,
+      required this.packagename,
+      required this.packageduration,
+      required this.packageprice,
+      required this.totalpackageprice});
 
   factory PackagesItem.fromJson(Map<String, dynamic> jsonMap) {
     return PackagesItem(

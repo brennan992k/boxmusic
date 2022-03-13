@@ -1,13 +1,13 @@
 class PopularMovie {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<PopularMovieItem> movie;
+  static late List<PopularMovieItem> movie;
 
   PopularMovie.getuserid(dynamic obj) {
     movie = obj
-        .map<PopularMovieItem>((json) => new PopularMovieItem.fromJson(json))
+        .map<PopularMovieItem>((json) => PopularMovieItem.fromJson(json))
         .toList();
   }
 }
@@ -20,11 +20,11 @@ class PopularMovieItem {
   int isliked;
 
   PopularMovieItem(
-      {this.movieid,
-      this.movieimage,
-      this.moviename,
-      this.isliked,
-      this.viewCount});
+      {required this.movieid,
+      required this.movieimage,
+      required this.moviename,
+      required this.isliked,
+      required this.viewCount});
 
   factory PopularMovieItem.fromJson(Map<String, dynamic> jsonMap) {
     return PopularMovieItem(

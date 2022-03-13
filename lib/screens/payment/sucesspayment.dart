@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/staticData.dart';
 
 // ignore: must_be_immutable
 class SucessPayment extends StatelessWidget {
-  AppConfig _appConfig;
+  late AppConfig _appConfig;
   @override
   Widget build(BuildContext context) {
     _appConfig = AppConfig(context);

@@ -1,18 +1,20 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:songapp/screens/Home.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/screens/Home.dart';
+import 'package:visong/staticData.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoSplashScreen extends StatefulWidget {
+  const VideoSplashScreen({Key? key}) : super(key: key);
+
   @override
   _VideoSplashScreenState createState() => _VideoSplashScreenState();
 }
 
 class _VideoSplashScreenState extends State<VideoSplashScreen> {
-  VideoPlayerController playerController;
-  VoidCallback listener;
+  late VideoPlayerController playerController;
+  late VoidCallback listener;
   @override
   void initState() {
     super.initState();
@@ -91,7 +93,7 @@ class _VideoSplashScreenState extends State<VideoSplashScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          new AspectRatio(
+          AspectRatio(
             aspectRatio: 9 / 16,
             child: Container(
               child: playerController != null

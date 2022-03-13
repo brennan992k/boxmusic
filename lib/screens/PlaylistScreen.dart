@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:nine_grid_view/nine_grid_view.dart';
 import 'package:palette_generator/palette_generator.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/model/HomeScreen/components/mostplayed.dart';
-import 'package:songapp/screens/music/music.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/model/HomeScreen/components/mostplayed.dart';
+import 'package:visong/screens/music/music.dart';
+import 'package:visong/staticData.dart';
 
 class PlaylistScreen extends StatefulWidget {
   final List image;
   final String playlistName;
   final String playlistId;
-  PlaylistScreen(this.image, this.playlistName, this.playlistId);
+  const PlaylistScreen(this.image, this.playlistName, this.playlistId,
+      {Key? key})
+      : super(key: key);
   @override
   _PlaylistScreenState createState() => _PlaylistScreenState();
 }
 
 class _PlaylistScreenState extends State<PlaylistScreen> {
-  Networkutils networkutils;
-  AppConfig _appConfig;
+  late Networkutils networkutils;
+  late AppConfig _appConfig;
   @override
   void initState() {
     super.initState();
@@ -29,9 +31,9 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
     // _update();
   }
 
-  List<PaletteColor> colors;
+  late List<PaletteColor> colors;
 
-  int index;
+  late int index;
   // _update() async {
   //   final PaletteGenerator generator = await PaletteGenerator.fromImageProvider(
   //       NetworkImage(Networkutils.Baserl1 + widget.image[0]),
@@ -59,7 +61,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
   // }
 
   // ignore: deprecated_member_use
-  List<MostPlayedItem> music = List();
+  List<MostPlayedItem> music = [];
   void getmusic() async {
     await networkutils.playlistmusic(widget.playlistId);
     music = MostPlayed.homemostplaylist;
@@ -69,14 +71,14 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
   Widget musics(i) {
     _appConfig = AppConfig(context);
     return Container(
-      padding: EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 0, 15, 10),
-            child: Container(
+            child: SizedBox(
               width: _appConfig.rH(6),
               height: _appConfig.rH(6),
               child: ClipRRect(
@@ -96,14 +98,14 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     width: _appConfig.rW(53),
                     child: Text(
                       music[i].musictitle,
                       maxLines: 1,
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: _appConfig.rW(20),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -113,14 +115,15 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                             ? GestureDetector(
                                 onTap: () {},
                                 child: Container(
-                                  margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(15, 0, 0, 0),
                                   width: _appConfig.rW(8),
                                   child: GestureDetector(
                                     onTap: () {
                                       // like('1', 'Music', music[i].musicid);
                                       // music[i].isliked = 1;
                                     },
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.favorite_outline,
                                     ),
                                   ),
@@ -129,7 +132,8 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                             : GestureDetector(
                                 onTap: () {},
                                 child: Container(
-                                  margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(15, 0, 0, 0),
                                   width: _appConfig.rW(8),
                                   child: GestureDetector(
                                     onTap: () {
@@ -138,7 +142,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
 
                                       print("jhjdhhdj");
                                     },
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.favorite,
                                       color: Colors.blueAccent,
                                     ),
@@ -146,7 +150,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                                 ),
                               ),
                         Container(
-                          margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                          margin: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                           child: Text(
                             music[i].likecount.toString(),
                             //style: recnttextview,
@@ -160,7 +164,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
               ),
               music[i].albumname == ""
                   ? Container(
-                      margin: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 15),
                       width: _appConfig.rW(60),
                       child: music[i].artistlist.length > 0
                           ? Text(
@@ -168,11 +172,11 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                               //  style: recnttextview,
                               maxLines: 1,
                             )
-                          : Text(""),
+                          : const Text(""),
                     )
-                  : music[i].artistlist.length == 0
+                  : music[i].artistlist.isEmpty
                       ? Container(
-                          margin: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                          margin: const EdgeInsets.fromLTRB(0, 5, 0, 15),
                           width: _appConfig.rW(60),
                           child: Text(
                             music[i].albumname,
@@ -181,7 +185,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                           ),
                         )
                       : Container(
-                          margin: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                          margin: const EdgeInsets.fromLTRB(0, 5, 0, 15),
                           width: _appConfig.rW(60),
                           child: Text(
                             music[i].albumname +
@@ -202,11 +206,12 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Are You Sure?'),
-          content: Text('Are You Want to Remove this music from playlist!'),
+          title: const Text('Are You Sure?'),
+          content:
+              const Text('Are You Want to Remove this music from playlist!'),
           actions: <Widget>[
             TextButton(
-              child: Text('NO'),
+              child: const Text('NO'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -216,9 +221,9 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25)),
               color: Colors.blueAccent,
-              child: Text(
+              child: const Text(
                 'Yes',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                 ),
               ),
@@ -244,9 +249,9 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
     _appConfig = AppConfig(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'PlayList',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
           ),
         ),
@@ -254,7 +259,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           color: Colors.black,
         ),
         elevation: 0,
@@ -294,7 +299,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                       child: NineGridView(
                         width: 220,
                         height: 220,
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         space: 1,
                         arcAngle: 50,
                         initIndex: 1,
@@ -314,18 +319,18 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
             ],
           ),
           music.length == 0
-              ? Center(
-                  child: CircularProgressIndicator(
+              ? const Center(
+                  child: const CircularProgressIndicator(
                     strokeWidth: 2,
                     backgroundColor: Colors.purple,
                   ),
                 )
               : Container(
-                  padding: EdgeInsets.only(left: 10),
+                  padding: const EdgeInsets.only(left: 10),
                   height: MediaQuery.of(context).size.height * 0.59,
                   child: ShaderMask(
                     shaderCallback: (Rect rect) {
-                      return LinearGradient(
+                      return const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [
@@ -345,7 +350,7 @@ class _PlaylistScreenState extends State<PlaylistScreen> {
                     blendMode: BlendMode.dstOut,
                     child: ListView.builder(
                       shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       itemCount: music.length,
                       itemBuilder: (context, i) {
                         return GestureDetector(

@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/customRoute.dart';
-import 'package:songapp/screens/music/music.dart';
-import 'package:songapp/screens/viewAlbum.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/customRoute.dart';
+import 'package:visong/model/HomeScreen/components/mostplayed.dart';
+import 'package:visong/screens/music/music.dart';
+import 'package:visong/screens/viewAlbum.dart';
+import 'package:visong/staticData.dart';
 
 // ignore: must_be_immutable
 class Favourites extends StatelessWidget {
   final List album;
-  final List recomSong;
-  Favourites(this.album, this.recomSong);
+  final List<MostPlayedItem> recomSong;
+
+  Favourites(this.album, this.recomSong, {Key? key}) : super(key: key);
+
   Widget songs(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        Container(
+        SizedBox(
           height: 200,
           width: 500,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 child: Container(
                   height: 140,
                   width: 140,
@@ -38,7 +41,7 @@ class Favourites extends StatelessWidget {
                         color: Colors.blueAccent.withOpacity(0.3),
                       ),
                     ],
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
@@ -49,12 +52,12 @@ class Favourites extends StatelessWidget {
                   ),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
-                        padding: EdgeInsets.only(right: 40),
-                        child: Text(
+                        padding: const EdgeInsets.only(right: 40),
+                        child: const Text(
                           'Play All',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -63,7 +66,7 @@ class Favourites extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Row(
@@ -72,7 +75,7 @@ class Favourites extends StatelessWidget {
                           Container(
                             height: 50,
                             width: 50,
-                            child: Icon(
+                            child: const Icon(
                               Icons.music_note,
                               color: Colors.orangeAccent,
                               size: 35,
@@ -97,7 +100,7 @@ class Favourites extends StatelessWidget {
                             child: Container(
                               height: 50,
                               width: 50,
-                              child: Icon(
+                              child: const Icon(
                                 Icons.play_arrow,
                                 color: Color.fromRGBO(79, 139, 241, 1),
                                 size: 35,
@@ -116,16 +119,16 @@ class Favourites extends StatelessWidget {
               ),
               Container(
                 height: 140,
-                padding: EdgeInsets.only(left: 5),
+                padding: const EdgeInsets.only(left: 5),
                 width: MediaQuery.of(context).size.width - 150,
                 child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 100,
                     childAspectRatio: 3 / 3,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   itemCount: recomSong.length,
                   itemBuilder: (ctx, i) => Container(
@@ -148,7 +151,7 @@ class Favourites extends StatelessWidget {
                         child: Container(
                           height: 50,
                           width: 80,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                           ),
                           child: ClipRRect(
@@ -180,7 +183,7 @@ class Favourites extends StatelessWidget {
     );
   }
 
-  AppConfig _appConfig;
+  late AppConfig _appConfig;
   Widget albums(BuildContext context) {
     _appConfig = AppConfig(context);
     return Column(
@@ -188,9 +191,9 @@ class Favourites extends StatelessWidget {
         Container(
           height: MediaQuery.of(context).size.height * 0.25,
           // color: Colors.red,
-          padding: EdgeInsets.only(top: 15),
+          padding: const EdgeInsets.only(top: 15),
           child: ListView.builder(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemCount: album.length,
             itemBuilder: (ctx, i) => GestureDetector(
@@ -209,7 +212,7 @@ class Favourites extends StatelessWidget {
                 );
               },
               child: Container(
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 5.0,
                   horizontal: 0.0,
                 ),
@@ -239,7 +242,7 @@ class Favourites extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5.0,
                     ),
                     Padding(
@@ -287,7 +290,7 @@ class Favourites extends StatelessWidget {
         // color: Colors.red,
         child: Container(
           decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 blurRadius: 7,
                 spreadRadius: 0,
@@ -301,7 +304,7 @@ class Favourites extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(left: 20, top: 10),
+                padding: const EdgeInsets.only(left: 20, top: 10),
                 child: Row(
                   children: [
                     Container(
@@ -310,7 +313,7 @@ class Favourites extends StatelessWidget {
                       // color: Colors.red,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(40),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
@@ -326,16 +329,16 @@ class Favourites extends StatelessWidget {
                     ),
                     Container(
                       padding: const EdgeInsets.only(left: 10),
-                      child: Text(
+                      child: const Text(
                         'Favourites',
                         style: TextStyle(
-                          color: Color.fromRGBO(153, 92, 228, 1),
+                          color: const Color.fromRGBO(153, 92, 228, 1),
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Container(
                       height: 30,
                       // color: Colors.red,
@@ -343,19 +346,19 @@ class Favourites extends StatelessWidget {
                       child: TabBar(
                         indicator: BoxDecoration(
                           borderRadius: BorderRadius.circular(40),
-                          gradient: LinearGradient(
+                          gradient: const LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                             colors: [
-                              Color.fromRGBO(0, 239, 215, 1),
+                              const Color.fromRGBO(0, 239, 215, 1),
                               Color.fromRGBO(153, 92, 228, 1),
                             ],
                           ),
                         ),
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         unselectedLabelColor: Colors.black,
                         labelColor: Colors.white,
-                        tabs: [
+                        tabs: const [
                           Tab(
                             text: 'Songs',
                           ),
@@ -365,19 +368,19 @@ class Favourites extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 // color: Colors.black,
                 height: MediaQuery.of(context).size.height - 398,
                 child: TabBarView(
                   children: [
-                    recomSong.length == 0
-                        ? Center(
+                    recomSong.isEmpty
+                        ? const Center(
                             child: CircularProgressIndicator(
                               strokeWidth: 2,
                               backgroundColor: Colors.purple,

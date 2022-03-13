@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/customRoute.dart';
-import 'package:songapp/model/HomeScreen/components/mostplayed.dart';
-import 'package:songapp/model/HomeScreen/components/recommendedAlbum.dart';
-import 'package:songapp/model/Playlist.dart';
-import 'package:songapp/screens/Home.dart';
-import 'package:songapp/screens/PlaylistScreen.dart';
-import 'package:songapp/screens/userprofile.dart/favourite.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/customRoute.dart';
+import 'package:visong/model/HomeScreen/components/mostplayed.dart';
+import 'package:visong/model/HomeScreen/components/recommendedAlbum.dart';
+import 'package:visong/model/Playlist.dart';
+import 'package:visong/screens/Home.dart';
+import 'package:visong/screens/PlaylistScreen.dart';
+import 'package:visong/screens/userprofile.dart/favourite.dart';
+import 'package:visong/staticData.dart';
 
 class Library extends StatefulWidget {
+  const Library({Key? key}) : super(key: key);
+
   // final List playlist;
   // final List album;
   // final List recomSong;
@@ -28,7 +30,7 @@ class _LibraryState extends State<Library> {
         height: 140,
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -37,14 +39,12 @@ class _LibraryState extends State<Library> {
           ],
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(Icons.add),
-              Text('Add Some Music'),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const <Widget>[
+            Icon(Icons.add),
+            Text('Add Some Music'),
+          ],
         ),
       );
     } else if (count == 1) {
@@ -52,7 +52,7 @@ class _LibraryState extends State<Library> {
         width: 140,
         height: 140,
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -81,7 +81,7 @@ class _LibraryState extends State<Library> {
         width: 140,
         height: 140,
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -99,7 +99,7 @@ class _LibraryState extends State<Library> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(7),
+                  margin: const EdgeInsets.all(7),
                   height: 55,
                   width: 55,
                   decoration: BoxDecoration(
@@ -136,7 +136,7 @@ class _LibraryState extends State<Library> {
         height: 140,
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -220,7 +220,7 @@ class _LibraryState extends State<Library> {
         width: 140,
         height: 140,
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -315,7 +315,7 @@ class _LibraryState extends State<Library> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   void addTx() async {
     final entertitle = textcontroller.text;
-    _formkey.currentState.validate();
+    _formkey.currentState!.validate();
     if (entertitle.isEmpty) {
       return;
     }
@@ -357,7 +357,7 @@ class _LibraryState extends State<Library> {
                 borderRadius: BorderRadius.circular(25),
               ),
               color: Colors.blueAccent,
-              child: Text(
+              child: const Text(
                 'Yes',
                 style: TextStyle(
                   color: Colors.white,
@@ -374,7 +374,7 @@ class _LibraryState extends State<Library> {
     );
   }
 
-  Networkutils networkutils;
+  late Networkutils networkutils;
   Future<void> deletePlaylist(String id) async {
     await networkutils.deleteplaylist(id);
     getPlaylist();
@@ -391,7 +391,7 @@ class _LibraryState extends State<Library> {
   }
 
   // ignore: deprecated_member_use
-  List<PlaylistItem> playlist = List();
+  List<PlaylistItem> playlist = [];
   void getPlaylist() async {
     await networkutils.getPlaylist();
     playlist = Playlist.playlists;
@@ -399,7 +399,7 @@ class _LibraryState extends State<Library> {
   }
 
   // ignore: deprecated_member_use
-  List<MostPlayedItem> recomSong = List();
+  List<MostPlayedItem> recomSong = [];
   void getMusic() async {
     await networkutils.recommededMusic();
     recomSong = MostPlayed.homemostplaylist;
@@ -407,7 +407,7 @@ class _LibraryState extends State<Library> {
   }
 
   // ignore: deprecated_member_use
-  List<RecommendedAlbumItem> recomAlbum = List();
+  List<RecommendedAlbumItem> recomAlbum = [];
   void getAllAlbum() async {
     await networkutils.recommededAlbum();
     recomAlbum = RecommendedAlbum.albumList;
@@ -430,7 +430,7 @@ class _LibraryState extends State<Library> {
               : MediaQuery.of(context).size.height * 0.4,
           child: Container(
             decoration: BoxDecoration(
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   blurRadius: 7,
                   spreadRadius: 0,
@@ -453,7 +453,7 @@ class _LibraryState extends State<Library> {
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 7,
                               spreadRadius: 0,
@@ -464,7 +464,7 @@ class _LibraryState extends State<Library> {
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            colors: [
+                            colors: const [
                               Color.fromRGBO(0, 239, 215, 1),
                               Color.fromRGBO(153, 92, 228, 1),
                             ],
@@ -592,7 +592,7 @@ class _LibraryState extends State<Library> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
                               gradient: LinearGradient(
-                                colors: [
+                                colors: const [
                                   Color.fromRGBO(0, 239, 215, 1),
                                   Color.fromRGBO(153, 92, 228, 1),
                                 ],

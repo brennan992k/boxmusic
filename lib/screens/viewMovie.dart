@@ -1,38 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/customRoute.dart';
-import 'package:songapp/model/HomeScreen/components/popularMovie.dart';
-import 'package:songapp/screens/viewAlbum.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/customRoute.dart';
+import 'package:visong/model/HomeScreen/components/popularMovie.dart';
+import 'package:visong/screens/viewAlbum.dart';
 
 class ViewMovieScreen extends StatefulWidget {
+  const ViewMovieScreen({Key? key}) : super(key: key);
+
   @override
   _ViewMovieScreenState createState() => _ViewMovieScreenState();
 }
 
 class _ViewMovieScreenState extends State<ViewMovieScreen> {
-  AppConfig _appConfig;
-  Networkutils networkutils;
+  late AppConfig _appConfig;
+  late Networkutils networkutils;
 
   Widget viewMovies() {
     return Container(
       height: double.infinity,
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       width: double.infinity,
       child: Column(
         children: <Widget>[
-          Container(
+          SizedBox(
             height: _appConfig.rH(80),
-            child: movie.length == 0
-                ? Center(
+            child: movie.isEmpty
+                ? const Center(
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
                       backgroundColor: Colors.purple,
                     ),
                   )
                 : GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3, childAspectRatio: 0.75),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3, childAspectRatio: 0.75),
                     itemCount: movie.length,
                     itemBuilder: (BuildContext context, int index) {
                       return GestureDetector(
@@ -51,11 +54,11 @@ class _ViewMovieScreenState extends State<ViewMovieScreen> {
                           );
                         },
                         child: Container(
-                          margin: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.symmetric(
                               vertical: 5.0, horizontal: 0.0),
                           child: Column(
                             children: <Widget>[
-                              Container(
+                              SizedBox(
                                 width: _appConfig.rHP(15),
                                 height: _appConfig.rHP(15),
                                 child: Stack(
@@ -85,7 +88,7 @@ class _ViewMovieScreenState extends State<ViewMovieScreen> {
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5.0,
                               ),
                               Padding(
@@ -124,7 +127,7 @@ class _ViewMovieScreenState extends State<ViewMovieScreen> {
   }
 
   // ignore: deprecated_member_use
-  List<PopularMovieItem> movie = List();
+  List<PopularMovieItem> movie = [];
   void getAllMovies() async {
     await networkutils.getAllMovies();
     movie = PopularMovie.movie;
@@ -139,22 +142,20 @@ class _ViewMovieScreenState extends State<ViewMovieScreen> {
         preferredSize: Size.fromHeight(_appConfig.rHP(7)),
         child: AppBar(
             backgroundColor: Colors.white,
-            title: Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Movies',
-                    style: TextStyle(
-                        fontSize: _appConfig.rHP(3),
-                        color: Colors.black,
-                        fontFamily: 'Montserrat'),
-                  ),
-                ],
-              ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'Movies',
+                  style: TextStyle(
+                      fontSize: _appConfig.rHP(3),
+                      color: Colors.black,
+                      fontFamily: 'Montserrat'),
+                ),
+              ],
             ),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.black54),
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.black54),
               onPressed: () => Navigator.pop(context, false),
             )),
       ),

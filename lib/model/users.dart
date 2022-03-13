@@ -5,17 +5,17 @@ List<Users> userFromJson(String str) =>
 
 class Users {
   Users({
-    this.userId,
-    this.userName,
-    this.userEmail,
-    this.userPassword,
-    this.userPhone,
-    this.userProfilePic,
-    this.userPackageId,
-    this.userPackagePaidDate,
-    this.userPackageExpiryDate,
-    this.userToken,
-    this.createdDate,
+    required this.userId,
+    required this.userName,
+    required this.userEmail,
+    required this.userPassword,
+    required this.userPhone,
+    required this.userProfilePic,
+    required this.userPackageId,
+    required this.userPackagePaidDate,
+    required this.userPackageExpiryDate,
+    required this.userToken,
+    required this.createdDate,
   });
 
   String userId;
@@ -50,8 +50,8 @@ SignupUser signupUserFromJson(String str) =>
 
 class SignupUser {
   SignupUser({
-    this.message,
-    this.result,
+    required this.message,
+    required this.result,
   });
 
   String message;
@@ -66,17 +66,17 @@ class SignupUser {
 
 class Result {
   Result({
-    this.userId,
-    this.userName,
-    this.userEmail,
-    this.userPassword,
-    this.userPhone,
-    this.userProfilePic,
-    this.userPackageId,
-    this.userPackagePaidDate,
-    this.userPackageExpiryDate,
-    this.userToken,
-    this.createdDate,
+    required this.userId,
+    required this.userName,
+    required this.userEmail,
+    required this.userPassword,
+    required this.userPhone,
+    required this.userProfilePic,
+    required this.userPackageId,
+    required this.userPackagePaidDate,
+    required this.userPackageExpiryDate,
+    required this.userToken,
+    required this.createdDate,
   });
 
   String userId;

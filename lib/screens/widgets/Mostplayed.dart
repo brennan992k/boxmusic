@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/screens/ViewMostPlay.dart';
-import 'package:songapp/screens/music/music.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/model/HomeScreen/components/mostplayed.dart';
+import 'package:visong/screens/ViewMostPlay.dart';
+import 'package:visong/screens/music/music.dart';
 
 class MostPlayed extends StatelessWidget {
-  final List mostplay;
-  MostPlayed(this.mostplay);
+  final List<MostPlayedItem> mostplay;
+  const MostPlayed(this.mostplay, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     AppConfig _appConfig;
     _appConfig = AppConfig(context);
-    return Container(
+    return SizedBox(
       height: _appConfig.rH(30),
       // color: Colors.red,
       child: Column(
         children: <Widget>[
           Container(
             width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.fromLTRB(5, 5, 0, 0),
-            padding: EdgeInsets.symmetric(horizontal: 5.0),
+            margin: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
@@ -38,35 +39,35 @@ class MostPlayed extends StatelessWidget {
                   ),
                   height: _appConfig.rH(3.5),
                   width: _appConfig.rH(3.5),
-                  child: Icon(
+                  child: const Icon(
                     Icons.play_arrow,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
-                Text(
+                const Text(
                   "Most Played",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                Spacer(),
+                const Spacer(),
                 Container(
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (ctx) => ViewMostPlayScreen(),
+                          builder: (ctx) => const ViewMostPlayScreen(),
                         ),
                       );
                     },
                     child: Container(
                       padding: const EdgeInsets.fromLTRB(10, 5, 5, 5),
                       // color: Colors.red,
-                      child: Text(
+                      child: const Text(
                         "See all",
                         style: TextStyle(
-                          color: Color.fromRGBO(153, 92, 228, 1),
+                          color: const Color.fromRGBO(153, 92, 228, 1),
                         ),
                         textAlign: TextAlign.right,
                       ),
@@ -78,10 +79,10 @@ class MostPlayed extends StatelessWidget {
           ),
           Container(
             // color: Colors.white,
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             height: _appConfig.rH(25),
             child: ListView.builder(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: mostplay.length,
               itemBuilder: (BuildContext context, int index) {
@@ -99,7 +100,7 @@ class MostPlayed extends StatelessWidget {
                   },
                   child: Container(
                     width: _appConfig.rHP(19.5),
-                    padding: EdgeInsets.only(left: 10.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     height: _appConfig.rHP(23),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -116,7 +117,7 @@ class MostPlayed extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5.0,
                         ),
                         Padding(

@@ -1,9 +1,9 @@
 class RecommendedAlbum {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<RecommendedAlbumItem> albumList;
+  static late List<RecommendedAlbumItem> albumList;
 
   RecommendedAlbum.getuserid(dynamic obj) {
     albumList = obj
@@ -21,11 +21,11 @@ class RecommendedAlbumItem {
   final int isliked;
 
   RecommendedAlbumItem(
-      {this.albumid,
-      this.albumimage,
-      this.albumname,
-      this.isliked,
-      this.likedCount});
+      {required this.albumid,
+      required this.albumimage,
+      required this.albumname,
+      required this.isliked,
+      required this.likedCount});
 
   factory RecommendedAlbumItem.fromJson(Map<String, dynamic> jsonMap) {
     return RecommendedAlbumItem(

@@ -1,13 +1,13 @@
 class PopularAlbum {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<PopularAlbumItem> popalbumlist;
+  static late List<PopularAlbumItem> popalbumlist;
 
   PopularAlbum.getuserid(dynamic obj) {
     popalbumlist = obj
-        .map<PopularAlbumItem>((json) => new PopularAlbumItem.fromJson(json))
+        .map<PopularAlbumItem>((json) => PopularAlbumItem.fromJson(json))
         .toList();
   }
 }
@@ -22,13 +22,13 @@ class PopularAlbumItem {
   final int musiccount;
 
   PopularAlbumItem({
-    this.albumid,
-    this.albumname,
-    this.albumimage,
-    this.viewCount,
-    this.musiccount,
-    this.isliked,
-    this.likecount,
+    required this.albumid,
+    required this.albumname,
+    required this.albumimage,
+    required this.viewCount,
+    required this.musiccount,
+    required this.isliked,
+    required this.likecount,
   });
 
   factory PopularAlbumItem.fromJson(Map<String, dynamic> jsonMap) {

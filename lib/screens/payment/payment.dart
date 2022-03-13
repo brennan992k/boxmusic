@@ -2,15 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/screens/payment/sucesspayment.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/screens/payment/sucesspayment.dart';
 
 // ignore: must_be_immutable
 class Payment extends StatefulWidget {
   String userid, pkgid, totlprice;
 
-  Payment(this.userid, this.pkgid, this.totlprice);
+  Payment(this.userid, this.pkgid, this.totlprice, {Key? key})
+      : super(key: key);
 
   @override
   _PaymentState createState() => _PaymentState();
@@ -24,7 +25,7 @@ class _PaymentState extends State<Payment> {
 
   final _history = [];
   // ignore: unused_field
-  StreamSubscription<String> _onUrlChanged;
+  late StreamSubscription<String> _onUrlChanged;
   @override
   void initState() {
     super.initState();
@@ -61,7 +62,7 @@ class _PaymentState extends State<Payment> {
     flutterWebViewPlugin.dispose();
   }
 
-  AppConfig _appConfig;
+  late AppConfig _appConfig;
   @override
   Widget build(BuildContext context) {
     _appConfig = AppConfig(context);

@@ -7,21 +7,21 @@ import 'package:flutter_media_notification/flutter_media_notification.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/customRoute.dart';
-import 'package:songapp/model/HomeScreen/components/mostplayed.dart';
-import 'package:songapp/model/Playlist.dart';
-import 'package:songapp/screens/music/play.dart';
-import 'package:songapp/screens/payment/choosePlanScreen.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/customRoute.dart';
+import 'package:visong/model/HomeScreen/components/mostplayed.dart';
+import 'package:visong/model/Playlist.dart';
+import 'package:visong/screens/music/play.dart';
+import 'package:visong/screens/payment/choosePlanScreen.dart';
+import 'package:visong/staticData.dart';
 
 // ignore: must_be_immutable
 class Music extends StatefulWidget {
   int mode;
   List<MostPlayedItem> songs;
   int index;
-  String image;
+  String? image;
 
   Music(this.songs, this.index, this.mode, {this.image});
   @override
@@ -29,10 +29,10 @@ class Music extends StatefulWidget {
 }
 
 class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
-  MostPlayedItem mostPlayedItem;
+  late MostPlayedItem mostPlayedItem;
   String musicUrl = '';
-  AudioPlayer _audioPlayer;
-  AnimationController _controller;
+  late AudioPlayer _audioPlayer;
+  late AnimationController _controller;
   bool _isshuffle = false;
   final scaffoldState = GlobalKey<ScaffoldState>();
 
@@ -50,7 +50,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
     mostPlayedItem = widget.songs[widget.index];
     musicUrl = Networkutils.Baserl1 + mostPlayedItem.musicfile;
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 2))
+        AnimationController(vsync: this, duration: const Duration(seconds: 2))
           ..repeat();
 
     print(musicUrl);
@@ -213,11 +213,11 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
     final directory = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationDocumentsDirectory();
-    return directory.path;
+    return directory!.path;
   }
 
   Widget dialog() {
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(
         strokeWidth: 2,
         backgroundColor: Colors.purple,
@@ -225,7 +225,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
     );
   }
 
-  String _localPath;
+  late String _localPath;
   // ProgressDialog pr;
   double percentage = 0.0;
   bool downloading = false;
@@ -254,7 +254,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
         // pr.show();
         dialog();
 
-        Future.delayed(Duration(seconds: 2)).then((onvalue) {
+        Future.delayed(const Duration(seconds: 2)).then((onvalue) {
           percentage = (percentage + 1.0);
           print("=======================>>>" + percentage.toString());
           print("${dirToSave.path}/" + mostPlayedItem.musictitle + ".mp3");
@@ -336,16 +336,16 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
   }
 
   // ignore: deprecated_member_use
-  List<PlaylistItem> playlist = List();
+  List<PlaylistItem> playlist = [];
   void getPlaylist() async {
     await networkutils.getPlaylist();
     playlist = Playlist.playlists;
     setState(() {});
   }
 
-  Networkutils networkutils;
+  late Networkutils networkutils;
   // ignore: deprecated_member_use
-  List<MostPlayedItem> mostplay = List();
+  List<MostPlayedItem> mostplay = [];
   void addmusic(String playlistid, String musicid) async {
     await networkutils.addMusicinPlaylist(playlistid, musicid);
     getPlaylist();
@@ -369,7 +369,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
         height: 120,
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -381,7 +381,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+            children: const <Widget>[
               Icon(Icons.add),
               Text('Add Some Music'),
             ],
@@ -393,7 +393,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
         width: 120,
         height: 120,
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -404,7 +404,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
           color: Colors.white,
         ),
         child: Container(
-          margin: EdgeInsets.all(7),
+          margin: const EdgeInsets.all(7),
           height: 45,
           width: 45,
           decoration: BoxDecoration(
@@ -422,7 +422,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
         width: 120,
         height: 120,
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -440,7 +440,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(7),
+                  margin: const EdgeInsets.all(7),
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
@@ -477,7 +477,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
         height: 120,
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -494,7 +494,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(7),
+                  margin: const EdgeInsets.all(7),
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
@@ -526,7 +526,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(7),
+                  margin: const EdgeInsets.all(7),
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
@@ -544,10 +544,10 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                     border: Border.all(width: 1),
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  margin: EdgeInsets.all(7),
+                  margin: const EdgeInsets.all(7),
                   height: 45,
                   width: 45,
-                  child: Icon(
+                  child: const Icon(
                     Icons.play_arrow,
                   ),
                 ),
@@ -561,7 +561,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
         width: 120,
         height: 120,
         decoration: BoxDecoration(
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               blurRadius: 7,
               spreadRadius: 0,
@@ -579,7 +579,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(7),
+                  margin: const EdgeInsets.all(7),
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
@@ -613,7 +613,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(left: 7, top: 7, bottom: 7),
+                  margin: const EdgeInsets.only(left: 7, top: 7, bottom: 7),
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
@@ -632,14 +632,14 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                     border: Border.all(width: 1),
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     left: 7,
                     top: 7,
                     bottom: 7,
                   ),
                   height: 45,
                   width: 45,
-                  child: Icon(
+                  child: const Icon(
                     Icons.play_arrow,
                   ),
                 ),
@@ -652,7 +652,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
     return Container();
   }
 
-  AppConfig _appConfig;
+  late AppConfig _appConfig;
   @override
   Widget build(BuildContext context) {
     _appConfig = AppConfig(context);
@@ -665,12 +665,12 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
           ),
         ),
-        title: Text(
+        title: const Text(
           'Now Playing',
           style: TextStyle(
             color: Colors.black,
@@ -704,7 +704,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                         width: _appConfig.rHP(30),
                         height: _appConfig.rHP(30),
                         // decoration: BoxDecoration(color: Colors.red),
-                        margin: EdgeInsets.only(top: 10),
+                        margin: const EdgeInsets.only(top: 10),
                         alignment: Alignment.center,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(180.0),
@@ -727,7 +727,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(40),
                           color: Colors.white,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               spreadRadius: 5,
                               blurRadius: 15,
@@ -741,43 +741,43 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 55,
           ),
           Container(
             child: Text(
               mostPlayedItem.musictitle,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           mostPlayedItem.albumname == ""
               ? Container(
-                  margin: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                  margin: const EdgeInsets.fromLTRB(0, 5, 0, 15),
                   width: _appConfig.rW(60),
                   child: mostPlayedItem.artistlist.length > 0
                       ? Text(
                           mostPlayedItem.artistlist[0].artistname,
                           maxLines: 1,
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             // fontSize: 20,
                           ),
                         )
-                      : Text(""),
+                      : const Text(""),
                 )
               : mostPlayedItem.artistlist.length == 0
                   ? Container(
-                      margin: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 15),
                       width: _appConfig.rW(60),
                       child: Text(
                         mostPlayedItem.albumname,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                           // fontSize: 20,
                         ),
@@ -785,13 +785,13 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                       ),
                     )
                   : Container(
-                      margin: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                      margin: const EdgeInsets.fromLTRB(0, 5, 0, 15),
                       width: _appConfig.rW(60),
                       child: Text(
                         mostPlayedItem.albumname +
                             " - " +
                             mostPlayedItem.artistlist[0].artistname,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.white,
                         ),
                         maxLines: 1,
@@ -810,22 +810,22 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                  scaffoldState.currentState.showBottomSheet(
+                  scaffoldState.currentState!.showBottomSheet(
                     (context) => Container(
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(60, 55, 61, 1),
+                        color: const Color.fromRGBO(60, 55, 61, 1),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       height: MediaQuery.of(context).size.height / 2,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Row(
                             children: <Widget>[
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Container(
@@ -840,7 +840,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 10,
                               ),
                               Column(
@@ -849,7 +849,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                                   Container(
                                     child: Text(
                                       mostPlayedItem.musictitle,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 20,
                                       ),
@@ -857,8 +857,8 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                                   ),
                                   mostPlayedItem.albumname == ""
                                       ? Container(
-                                          margin:
-                                              EdgeInsets.fromLTRB(0, 5, 0, 15),
+                                          margin: const EdgeInsets.fromLTRB(
+                                              0, 5, 0, 15),
                                           width: _appConfig.rW(60),
                                           child:
                                               mostPlayedItem.artistlist.length >
@@ -868,21 +868,21 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                                                           .artistlist[0]
                                                           .artistname,
                                                       maxLines: 1,
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                         color: Colors.white,
                                                         // fontSize: 20,
                                                       ),
                                                     )
-                                                  : Text(""),
+                                                  : const Text(""),
                                         )
                                       : mostPlayedItem.artistlist.length == 0
                                           ? Container(
-                                              margin: EdgeInsets.fromLTRB(
+                                              margin: const EdgeInsets.fromLTRB(
                                                   0, 5, 0, 15),
                                               width: _appConfig.rW(60),
                                               child: Text(
                                                 mostPlayedItem.albumname,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: Colors.white,
                                                   // fontSize: 20,
                                                 ),
@@ -890,7 +890,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                                               ),
                                             )
                                           : Container(
-                                              margin: EdgeInsets.fromLTRB(
+                                              margin: const EdgeInsets.fromLTRB(
                                                   0, 5, 0, 15),
                                               width: _appConfig.rW(60),
                                               child: Text(
@@ -898,7 +898,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                                                     " - " +
                                                     mostPlayedItem.artistlist[0]
                                                         .artistname,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: Colors.white,
                                                 ),
                                                 maxLines: 1,
@@ -908,29 +908,29 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Divider(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: const Divider(
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Text(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: const Text(
                               'Add Song to...',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 19,
                                 color: Colors.white,
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
                           Container(
@@ -945,7 +945,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     playlists(playlist[i].musiccount, i),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     GestureDetector(
@@ -966,13 +966,14 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(40),
-                                          color: Color.fromRGBO(73, 67, 77, 1),
+                                          color: const Color.fromRGBO(
+                                              73, 67, 77, 1),
                                         ),
                                         width: 80,
                                         alignment: Alignment.center,
-                                        child: Text(
+                                        child: const Text(
                                           'Add',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                           ),
                                         ),
@@ -1042,9 +1043,9 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                 ? MediaQuery.of(context).size.height * 0.03
                 : 0,
           ),
-          Spacer(),
+          const Spacer(),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: ValueListenableBuilder<ProgressBarState>(
               valueListenable: progressNotifier,
               builder: (_, value, __) {
@@ -1062,13 +1063,13 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Container(
@@ -1092,7 +1093,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                       );
                     }
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.skip_previous,
                   ),
                 ),
@@ -1101,7 +1102,7 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
                   // color: Colors.red,
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
@@ -1118,10 +1119,10 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                     switch (value) {
                       case ButtonState.loading:
                         return Container(
-                          margin: EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.all(8.0),
                           width: 32.0,
                           height: 32.0,
-                          child: CircularProgressIndicator(
+                          child: const CircularProgressIndicator(
                             strokeWidth: 2,
                             backgroundColor: Colors.purple,
                           ),
@@ -1167,12 +1168,12 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
                       );
                     }
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.skip_next,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
             ],
@@ -1188,9 +1189,9 @@ class _MusicState extends State<Music> with SingleTickerProviderStateMixin {
 
 class ProgressBarState {
   ProgressBarState({
-    this.current,
-    this.buffered,
-    this.total,
+    required this.current,
+    required this.buffered,
+    required this.total,
   });
   final Duration current;
   final Duration buffered;

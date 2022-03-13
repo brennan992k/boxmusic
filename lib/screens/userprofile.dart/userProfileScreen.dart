@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/model/HomeScreen/components/favouriteArtist.dart';
-import 'package:songapp/model/HomeScreen/components/mostplayed.dart';
-import 'package:songapp/screens/userprofile.dart/artist.dart' as a;
-import 'package:songapp/screens/userprofile.dart/editprofileScreen.dart';
-import 'package:songapp/screens/userprofile.dart/library.dart';
-import 'package:songapp/screens/userprofile.dart/recent.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/model/HomeScreen/components/favouriteArtist.dart';
+import 'package:visong/model/HomeScreen/components/mostplayed.dart';
+import 'package:visong/screens/userprofile.dart/artist.dart' as a;
+import 'package:visong/screens/userprofile.dart/editprofileScreen.dart';
+import 'package:visong/screens/userprofile.dart/library.dart';
+import 'package:visong/screens/userprofile.dart/recent.dart';
+import 'package:visong/staticData.dart';
 
 class UserProfileSceen extends StatefulWidget {
+  const UserProfileSceen({Key? key}) : super(key: key);
+
   @override
   _UserProfileSceenState createState() => _UserProfileSceenState();
 }
 
 class _UserProfileSceenState extends State<UserProfileSceen> {
-  Networkutils networkutils;
+  late Networkutils networkutils;
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance
+    WidgetsBinding.instance!
         .addPostFrameCallback((_) => _selectWidgetPosition(_key1));
     networkutils = Networkutils();
     // getPlaylist();
@@ -37,7 +39,7 @@ class _UserProfileSceenState extends State<UserProfileSceen> {
   double _selectorPosiontX = 53.0;
   _selectedItem(int i) {
     _currentselection = i;
-    GlobalKey _selectedglobalkey;
+    late GlobalKey _selectedglobalkey;
     switch (i) {
       case 1:
         _selectedglobalkey = _key1;
@@ -55,7 +57,7 @@ class _UserProfileSceenState extends State<UserProfileSceen> {
   }
 
   // ignore: deprecated_member_use
-  List<MostPlayedItem> recent = List();
+  List<MostPlayedItem> recent = [];
   void getrecent() async {
     await networkutils.recentPlayed();
     recent = MostPlayed.homemostplaylist;
@@ -63,15 +65,16 @@ class _UserProfileSceenState extends State<UserProfileSceen> {
   }
 
   _selectWidgetPosition(GlobalKey selectedKey) {
-    final RenderBox renderBox = selectedKey.currentContext.findRenderObject();
-    final widgetposition = renderBox.localToGlobal(Offset.zero);
-    final widgetsize = renderBox.size;
-    _selectorPosiontX =
-        widgetposition.dx - ((_selectorWidth - widgetsize.width) / 2);
+    final RenderObject? renderBox =
+        selectedKey.currentContext!.findRenderObject();
+    // final widgetposition = renderBox!.localToGlobal(Offset.zero);
+    // final widgetsize = renderBox.size;
+    // _selectorPosiontX =
+    //     widgetposition.dx - ((_selectorWidth - widgetsize.width) / 2);
   }
 
   // ignore: deprecated_member_use
-  List<FavouriteArtistItem> favartist = List();
+  List<FavouriteArtistItem> favartist = [];
   void getfavArtist() async {
     await networkutils.getFavArtist();
     favartist = FavouriteArtist.favList;

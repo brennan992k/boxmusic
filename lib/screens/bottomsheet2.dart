@@ -1,11 +1,11 @@
-import 'package:flutter/services.dart';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/model/Playlist.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/model/Playlist.dart';
 
 class Sheet extends StatefulWidget {
+  const Sheet({Key? key}) : super(key: key);
+
   // final Function newTx;
 
   // Sheet(this.newTx);
@@ -17,7 +17,7 @@ class Sheet extends StatefulWidget {
 class _SheetState extends State<Sheet> {
   final textcontroller = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
-  Networkutils networkutils;
+  late Networkutils networkutils;
   @override
   void initState() {
     super.initState();
@@ -26,7 +26,7 @@ class _SheetState extends State<Sheet> {
   }
 
   // ignore: deprecated_member_use
-  List<PlaylistItem> playlist = List();
+  List<PlaylistItem> playlist = [];
   void getPlaylist() async {
     await networkutils.getPlaylist();
     playlist = Playlist.playlists;
@@ -35,7 +35,7 @@ class _SheetState extends State<Sheet> {
 
   void addTx() async {
     final entertitle = textcontroller.text;
-    _formkey.currentState.validate();
+    _formkey.currentState!.validate();
     if (entertitle.isEmpty) {
       return;
     }
@@ -73,33 +73,33 @@ class _SheetState extends State<Sheet> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.close,
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
-                  Text(
+                  const Text(
                     'Create New Playlist',
                     style: TextStyle(fontSize: 22, color: Colors.white),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   IconButton(
                     onPressed: () {
                       textcontroller.text.isEmpty ? toast() : addTx();
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.check,
                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
@@ -114,8 +114,8 @@ class _SheetState extends State<Sheet> {
                 child: TextFormField(
                   textCapitalization: TextCapitalization.words,
                   autofocus: true,
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
+                  style: const TextStyle(color: Colors.black),
+                  decoration: const InputDecoration(
                     hintText: 'Be epic,add an awesome title',
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
@@ -134,7 +134,7 @@ class _SheetState extends State<Sheet> {
                   controller: textcontroller,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
             ],

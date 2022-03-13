@@ -13,15 +13,15 @@ class MovieAlbumModel {
   final List<MostPlayedItem> mostplay;
 
   MovieAlbumModel({
-    this.albumimage,
-    this.moviename,
-    this.categoryname,
-    this.isliked,
-    this.likecount,
-    this.albumname,
-    this.mostplay,
-    this.artistid,
-    this.albumid,
+    required this.albumimage,
+    required this.moviename,
+    required this.categoryname,
+    required this.isliked,
+    required this.likecount,
+    required this.albumname,
+    required this.mostplay,
+    required this.artistid,
+    required this.albumid,
   });
 
   factory MovieAlbumModel.fromJson(Map<String, dynamic> jsonMap) {

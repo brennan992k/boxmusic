@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/model/package.dart';
-import 'package:songapp/screens/payment/payment.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/model/package.dart';
+import 'package:visong/screens/payment/payment.dart';
+import 'package:visong/staticData.dart';
 
 // ignore: must_be_immutable
 class PaymentScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  AppConfig _appConfig;
+   late AppConfig _appConfig;
   @override
   Widget build(BuildContext context) {
     _appConfig = AppConfig(context);

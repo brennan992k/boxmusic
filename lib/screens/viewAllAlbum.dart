@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/model/HomeScreen/components/albumItem.dart';
-import 'package:songapp/screens/viewAlbum.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/model/HomeScreen/components/albumItem.dart';
+import 'package:visong/screens/viewAlbum.dart';
 
 class ViewAllAlbumSceen extends StatefulWidget {
   @override
@@ -10,8 +10,8 @@ class ViewAllAlbumSceen extends StatefulWidget {
 }
 
 class _ViewAllAlbumSceenState extends State<ViewAllAlbumSceen> {
-  Networkutils networkutils;
-  AppConfig _appConfig;
+  late Networkutils networkutils;
+  late AppConfig _appConfig;
   var foregroundWidget = Container(
       alignment: AlignmentDirectional.center,
       child: CircularProgressIndicator());
@@ -32,7 +32,7 @@ class _ViewAllAlbumSceenState extends State<ViewAllAlbumSceen> {
   // }
 
   // ignore: deprecated_member_use
-  List<PopularAlbumItem> album = List();
+  List<PopularAlbumItem> album = [];
   void getAllAlbum() async {
     await networkutils.getAllAlbum();
     album = PopularAlbum.popalbumlist;

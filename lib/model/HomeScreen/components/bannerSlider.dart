@@ -1,13 +1,13 @@
 class Banner {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<BannerSliderItem> bannersliderLIst;
+  static late List<BannerSliderItem> bannersliderLIst;
 
   Banner.getuserid(dynamic obj) {
     bannersliderLIst = obj
-        .map<BannerSliderItem>((json) => new BannerSliderItem.fromJson(json))
+        .map<BannerSliderItem>((json) => BannerSliderItem.fromJson(json))
         .toList();
   }
 }
@@ -24,15 +24,15 @@ class BannerSliderItem {
   final String bannersliderstatus;
 
   BannerSliderItem({
-    this.bannersliderid,
-    this.bannerslidershowbutton,
-    this.bannerslidernamealignment,
-    this.bannersliderimage,
-    this.bannersliderbuttonalignment,
-    this.bannersliderbuttontext,
-    this.bannerslidername,
-    this.bannersliderorder,
-    this.bannersliderstatus,
+    required this.bannersliderid,
+    required this.bannerslidershowbutton,
+    required this.bannerslidernamealignment,
+    required this.bannersliderimage,
+    required this.bannersliderbuttonalignment,
+    required this.bannersliderbuttontext,
+    required this.bannerslidername,
+    required this.bannersliderorder,
+    required this.bannersliderstatus,
   });
 
   factory BannerSliderItem.fromJson(Map<String, dynamic> jsonMap) {

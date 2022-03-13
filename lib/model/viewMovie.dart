@@ -13,15 +13,15 @@ class ViewMovie {
   final List<MostPlayedItem> mostplay;
 
   ViewMovie({
-    this.movieimage,
-    this.moviename,
-    this.moviedescription,
-    this.isliked,
-    this.likecount,
-    this.albumname,
-    this.mostplay,
-    this.movieid,
-    this.movieyear,
+    required this.movieimage,
+    required this.moviename,
+    required this.moviedescription,
+    required this.isliked,
+    required this.likecount,
+    required this.albumname,
+    required this.mostplay,
+    required this.movieid,
+    required this.movieyear,
   });
 
   factory ViewMovie.fromJson(Map<String, dynamic> jsonMap) {

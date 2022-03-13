@@ -1,9 +1,9 @@
 class AllComponents {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<AllComponentsItem> list;
+  static late List<AllComponentsItem> list;
 
   AllComponents.getuserid(dynamic obj) {
     list = obj
@@ -19,10 +19,10 @@ class AllComponentsItem {
   final String homecomponentssliderallowed;
 
   AllComponentsItem(
-      {this.homecomponentsid,
-      this.homecomponentsname,
-      this.homecomponentsorder,
-      this.homecomponentssliderallowed});
+      {required this.homecomponentsid,
+      required this.homecomponentsname,
+      required this.homecomponentsorder,
+      required this.homecomponentssliderallowed});
 
   factory AllComponentsItem.fromJson(Map<String, dynamic> jsonMap) {
     return AllComponentsItem(

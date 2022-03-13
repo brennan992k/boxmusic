@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppConfig {
-  double _height;
-  double _width;
-  double _heightPadding;
-  double _widthPadding;
+  late double _height;
+  late double _width;
+  late double _heightPadding;
+  late double _widthPadding;
 
   AppConfig(context) {
     MediaQueryData _queryData = MediaQuery.of(context);

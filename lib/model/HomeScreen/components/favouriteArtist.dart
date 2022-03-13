@@ -1,9 +1,9 @@
 class FavouriteArtist {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<FavouriteArtistItem> favList;
+  static late List<FavouriteArtistItem> favList;
 
   FavouriteArtist.getuserid(dynamic obj) {
     favList = obj
@@ -21,11 +21,11 @@ class FavouriteArtistItem {
   int isliked;
 
   FavouriteArtistItem({
-    this.artistid,
-    this.artistname,
-    this.artistimage,
-    this.likedCount,
-    this.isliked,
+    required this.artistid,
+    required this.artistname,
+    required this.artistimage,
+    required this.likedCount,
+    required this.isliked,
   });
 
   factory FavouriteArtistItem.fromJson(Map<String, dynamic> jsonMap) {

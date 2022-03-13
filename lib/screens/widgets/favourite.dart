@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/model/HomeScreen/components/favouriteArtist.dart';
-import 'package:songapp/screens/viewArtist.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/model/HomeScreen/components/favouriteArtist.dart';
+import 'package:visong/screens/viewArtist.dart';
+import 'package:visong/staticData.dart';
 
 // ignore: must_be_immutable
 class FavouriteArtists extends StatefulWidget {
+  const FavouriteArtists({Key? key}) : super(key: key);
+
   // final List favartist;
   // final Function artist;
   // FavouriteArtists(this.favartist, this.artist);
@@ -16,8 +18,8 @@ class FavouriteArtists extends StatefulWidget {
 }
 
 class _FavouriteArtistsState extends State<FavouriteArtists> {
-  AppConfig _appConfig;
-  Networkutils networkutils;
+  late AppConfig _appConfig;
+  late Networkutils networkutils;
 
   Future like(String id, liketype, liketypeId) async {
     await networkutils.like(id, liketype, liketypeId);
@@ -32,7 +34,7 @@ class _FavouriteArtistsState extends State<FavouriteArtists> {
   }
 
   // ignore: deprecated_member_use
-  List<FavouriteArtistItem> favartist = List();
+  List<FavouriteArtistItem> favartist = [];
   void getfavArtist() async {
     await networkutils.getFavArtist();
     favartist = FavouriteArtist.favList;

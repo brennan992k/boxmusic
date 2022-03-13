@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/model/package.dart';
-import 'package:songapp/screens/payment/paymentscreen.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/model/package.dart';
+import 'package:visong/screens/payment/paymentscreen.dart';
+import 'package:visong/staticData.dart';
 
 class ChoosePlanScreen extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class ChoosePlanScreen extends StatefulWidget {
 }
 
 class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
-  AppConfig _appConfig;
+  late AppConfig _appConfig;
   bool isone = false, istwo = false, isthre = false, isfour = true;
 
   int i = 3;
@@ -51,7 +51,7 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
     setState(() {});
   }
 
-  Networkutils networkutils;
+  late Networkutils networkutils;
   @override
   void initState() {
     super.initState();
@@ -60,7 +60,7 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
   }
 
 // ignore: deprecated_member_use
-  List<PackagesItem> pckglist = List();
+  List<PackagesItem> pckglist = [];
 
   void getpackage() async {
     await networkutils.getpackage();

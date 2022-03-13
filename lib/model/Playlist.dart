@@ -1,10 +1,15 @@
 class Playlist {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
+  Playlist({
+    required this.status,
+    required this.message,
+    required this.response,
+  });
 
-  static List<PlaylistItem> playlists;
-  static List<Imagess> images;
+  static late List<PlaylistItem> playlists;
+  static late List<Imagess> images;
 
   Playlist.getuserid(dynamic obj) {
     playlists = obj
@@ -20,10 +25,10 @@ class PlaylistItem {
   final List<Imagess> imagesslist;
 
   PlaylistItem({
-    this.userplaylistid,
-    this.userplaylistname,
-    this.imagesslist,
-    this.musiccount,
+    required this.userplaylistid,
+    required this.userplaylistname,
+    required this.imagesslist,
+    required this.musiccount,
   });
 
   factory PlaylistItem.fromJson(Map<String, dynamic> jsonMap) {
@@ -42,7 +47,7 @@ class PlaylistItem {
 class Imagess {
   final String musicimage;
 
-  Imagess({this.musicimage});
+  Imagess({required this.musicimage});
 
   factory Imagess.fromJson(Map<String, dynamic> jsonMap) {
     return Imagess(musicimage: jsonMap['music_image']);

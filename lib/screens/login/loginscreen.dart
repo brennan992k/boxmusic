@@ -3,21 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/model/users.dart';
-import 'package:songapp/screens/Home.dart';
-import 'package:songapp/screens/login/background.dart';
-import 'package:songapp/screens/signup/signupscreen.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/model/users.dart';
+import 'package:visong/screens/Home.dart';
+import 'package:visong/screens/login/background.dart';
+import 'package:visong/screens/signup/signupscreen.dart';
+import 'package:visong/staticData.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _passcontroller = TextEditingController();
-  TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _passcontroller = TextEditingController();
+  final TextEditingController _emailcontroller = TextEditingController();
   bool _showPassword = true;
 
   Widget buildTextfield(
@@ -29,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: 1,
           color:
               // Color.fromRGBO(74, 188, 193, 1),
-              Color.fromRGBO(60, 211, 173, 1),
+              const Color.fromRGBO(60, 211, 173, 1),
         ),
       ),
       margin: const EdgeInsets.symmetric(
@@ -39,12 +41,12 @@ class _LoginScreenState extends State<LoginScreen> {
         alignment: Alignment.center,
         margin: const EdgeInsets.symmetric(horizontal: 5),
         child: TextField(
-          cursorColor: Color.fromRGBO(60, 211, 173, 1),
+          cursorColor: const Color.fromRGBO(60, 211, 173, 1),
           controller: _controller,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
           decoration: InputDecoration(
             hintText: title,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               fontSize: 20,
               color: Colors.black,
             ),
@@ -62,8 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  SharedPreferences sharedPreferences;
-  List<Users> _data;
+  late SharedPreferences sharedPreferences;
+  late List<Users> _data;
   // final FirebaseAuth _auth = FirebaseAuth.instance;
   // final GoogleSignIn googleSignIn = GoogleSignIn();
   // Future<User> signInWithGoogle(BuildContext context) async {
@@ -114,19 +116,19 @@ class _LoginScreenState extends State<LoginScreen> {
     if (mounted) {
       await Networkutils().postGoogleSignin(email, '1').then((value) {
         setState(() {
-          _data = value;
+          _data = value ?? [];
         });
       });
       try {
         if (_data[0].userId == null) {
           print('object');
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('check Your credetials!')));
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('check Your credetials!')));
           return;
         }
       } on RangeError catch (_) {
         return ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('User is Already Registered!'),
             backgroundColor: Colors.redAccent,
           ),
@@ -162,20 +164,20 @@ class _LoginScreenState extends State<LoginScreen> {
     )
         .then((value) {
       setState(() {
-        _data = value;
+        _data = value ?? [];
       });
     });
     try {
       if (_data[0].userId == null) {
         print('object');
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('check Your credetials!')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('check Your credetials!')));
         return;
       }
     } on RangeError catch (_) {
       // Navigator.of(context).pop();
       return ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Check Your Credentials!'),
           backgroundColor: Colors.redAccent,
         ),
@@ -210,14 +212,14 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: size.height * 0.1),
-              SizedBox(
+              const SizedBox(
                 height: 3,
               ),
               SizedBox(
                 height: size.height * 0.2,
               ),
               buildTextfield('Email', 'ic_profile', _emailcontroller),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Container(
@@ -225,7 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     width: 1,
-                    color: Color.fromRGBO(60, 211, 173, 1),
+                    color: const Color.fromRGBO(60, 211, 173, 1),
                   ),
                 ),
                 margin: const EdgeInsets.symmetric(
@@ -235,13 +237,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.center,
                   margin: const EdgeInsets.symmetric(horizontal: 5),
                   child: TextField(
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                     obscureText: _showPassword,
-                    cursorColor: Color.fromRGBO(60, 211, 173, 1),
+                    cursorColor: const Color.fromRGBO(60, 211, 173, 1),
                     controller: _passcontroller,
                     decoration: InputDecoration(
                       hintText: 'Password',
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                       ),
@@ -253,10 +255,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                         icon: _showPassword
-                            ? FaIcon(
+                            ? const FaIcon(
                                 FontAwesomeIcons.eye,
                               )
-                            : FaIcon(
+                            : const FaIcon(
                                 FontAwesomeIcons.eyeSlash,
                               ),
                         color: Colors.black,
@@ -272,13 +274,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 7,
               ),
               Container(
                 margin: const EdgeInsets.only(right: 24),
                 alignment: Alignment.centerRight,
-                child: Text(
+                child: const Text(
                   'Forgot Password?',
                   style: TextStyle(
                     fontSize: 18,
@@ -286,7 +288,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               GestureDetector(
@@ -301,13 +303,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Color.fromRGBO(153, 92, 228, 1),
-                        Color.fromRGBO(0, 239, 215, 1).withOpacity(0.5),
+                        const Color.fromRGBO(153, 92, 228, 1),
+                        const Color.fromRGBO(0, 239, 215, 1).withOpacity(0.5),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: Text(
+                  child: const Text(
                     'LOG IN',
                     style: TextStyle(
                       fontSize: 18,
@@ -321,7 +323,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Container(
                 alignment: Alignment.center,
-                child: Text(
+                child: const Text(
                   'Or Login with',
                   style: TextStyle(
                     fontSize: 18,
@@ -329,7 +331,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               IntrinsicHeight(
@@ -340,7 +342,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 50,
                       child: Image.asset(StaticData.imagepath + 'ic_fb.png'),
                     ),
-                    VerticalDivider(
+                    const VerticalDivider(
                       thickness: 2,
                       color: Colors.grey,
                     ),
@@ -357,20 +359,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     'Don\'t have an account yet?',
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   GestureDetector(
@@ -390,10 +392,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                           width: 1,
-                          color: Color.fromRGBO(32, 173, 149, 1),
+                          color: const Color.fromRGBO(32, 173, 149, 1),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Sign Up',
                         style: TextStyle(
                           fontSize: 18,

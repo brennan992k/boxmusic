@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
-import 'package:songapp/Api/Networkutils.dart';
-import 'package:songapp/appconfi.dart';
-import 'package:songapp/model/HomeScreen/components/mostplayed.dart';
-import 'package:songapp/staticData.dart';
+import 'package:visong/Api/Networkutils.dart';
+import 'package:visong/appconfi.dart';
+import 'package:visong/model/HomeScreen/components/mostplayed.dart';
+import 'package:visong/staticData.dart';
 
 import 'music/music.dart';
 
@@ -27,13 +27,13 @@ class ViewAlbumScreen extends StatefulWidget {
 }
 
 class _ViewAlbumScreenState extends State<ViewAlbumScreen> {
-  Networkutils networkutils;
+  late Networkutils networkutils;
   // ignore: deprecated_member_use
-  List<MostPlayedItem> music = List();
-  AppConfig _appConfig;
-  String image;
-  List<PaletteColor> colors;
-  int index;
+  List<MostPlayedItem> music = [];
+  late AppConfig _appConfig;
+  late String image;
+  late List<PaletteColor> colors;
+  late int index;
 
   @override
   void initState() {
@@ -55,11 +55,11 @@ class _ViewAlbumScreenState extends State<ViewAlbumScreen> {
   _update() async {
     final PaletteGenerator generator = await PaletteGenerator.fromImageProvider(
         NetworkImage(Networkutils.Baserl1 + widget.image),
-        size: Size(400, 400),
+        size: const Size(400, 400),
         maximumColorCount: 20);
     colors.add(
       generator.darkMutedColor != null
-          ? generator.dominantColor
+          ? generator.dominantColor!
           : PaletteColor(Colors.blue, 2),
     );
     if (widget.type == 'Album') {

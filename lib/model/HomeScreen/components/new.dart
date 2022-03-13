@@ -1,9 +1,9 @@
 class AllAlbum {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<AllAlbumItem> popalbumlist;
+  static late List<AllAlbumItem> popalbumlist;
 
   AllAlbum.getuserid(dynamic obj) {
     popalbumlist = obj
@@ -20,11 +20,11 @@ class AllAlbumItem {
   final int likecount;
 
   AllAlbumItem({
-    this.albumid,
-    this.albumname,
-    this.albumimage,
-    this.isliked,
-    this.likecount,
+    required this.albumid,
+    required this.albumname,
+    required this.albumimage,
+    required this.isliked,
+    required this.likecount,
   });
 
   factory AllAlbumItem.fromJson(Map<String, dynamic> jsonMap) {

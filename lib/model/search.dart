@@ -1,9 +1,9 @@
 class Searches {
-  String status;
-  String message;
-  String response;
+  late String status;
+  late String message;
+  late String response;
 
-  static List<SearchesItem> searchlist;
+  static late List<SearchesItem> searchlist;
 
   Searches.getuserid(dynamic obj) {
     searchlist = obj
@@ -17,7 +17,8 @@ class SearchesItem {
   final String id;
   final String searchtext;
 
-  SearchesItem({this.searchtext, this.id, this.searchtype});
+  SearchesItem(
+      {required this.searchtext, required this.id, required this.searchtype});
 
   factory SearchesItem.fromJson(Map<String, dynamic> jsonMap) {
     return SearchesItem(
